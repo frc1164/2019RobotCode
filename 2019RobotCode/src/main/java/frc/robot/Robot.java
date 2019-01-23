@@ -7,9 +7,16 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+//import edu.wpi.first.wpilibj.
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +30,16 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+  TalonSRX Talon1 = new TalonSRX(1); 
+  TalonSRX Talon2 = new TalonSRX(2);
+  Spark Spark1 = new Spark(1);
+  Spark Spark2 = new Spark(2);
+  Spark Spark3 = new Spark(3);
+  Spark Spark4 = new Spark(4);
+
+  Joystick Stick = new Joystick(0);
+
 
   /**
    * This function is run when the robot is first started up and should be
@@ -86,7 +103,46 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-  }
+
+    if(Math.abs(Stick.getRawAxis(0)) >= 0.2){ // Deadband left joystick to prevent continuos motor running
+      // set left drive to left joystick value
+      Spark1.set(Stick.getRawAxis(0));
+      Spark2.set(Stick.getRawAxis(0));
+    }// end if
+    
+    else{// stop motors if joystick is centered
+      Spark1.set(0);
+      Spark2.set(0);
+    }// end else
+
+    if(Math.abs(Stick.getRawAxis(2)) >= 0.2){//deadband right joystick to prevent continous motor running
+      //set right drive to right joystick value
+      Spark3.set(Stick.getRawAxis(2));
+      Spark4.set(Stick.getRawAxis(2));
+    }//end if
+
+    else{//stop motors if joystick is centered
+      Spark3.set(0);
+      Spark4.set(0);
+    }// end else
+
+    if (Stick.getRawButton(0) == true) {// move climbing arm up on button press and stop on release
+      Talon1.set(ControlMode.PercentOutput, 0.5);
+      Talon2.set(ControlMode.PercentOutput, 0.5);
+    } else {
+      Talon1.set(ControlMode.PercentOutput, 0);
+      Talon2.set(ControlMode.PercentOutput, 0);
+    }// end ifelse
+
+    if (Stick.getRawButton(2) == true) {
+      Talon1.set(ControlMode.PercentOutput, -0.5);
+      Talon2.set(ControlMode.PercentOutput, -0.5);
+    } else {
+      Talon1.set(ControlMode.PercentOutput, 0); 
+      Talon2.set(ControlMode.PercentOutput, 0);
+    }// end ifelse
+
+  }// end teleopPeriodic
 
   /**
    * This function is called periodically during test mode.
@@ -94,4 +150,5 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
 }
