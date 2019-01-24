@@ -106,12 +106,12 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
       // set left drive to left joystick value
-      Spark3.set(-Stick.getRawAxis(3));
-      Spark4.set(-Stick.getRawAxis(3));
-   
-      //set right drive to right joystick value
       Spark1.set(Stick.getRawAxis(1));
       Spark2.set(Stick.getRawAxis(1));
+   
+      //set right drive to right joystick
+      Spark3.set(-Stick.getRawAxis(3));
+      Spark4.set(-Stick.getRawAxis(3));
 
     if (Stick.getRawButton(4) == true) {// move climbing arm up on button press and stop on release
       Talon1.set(ControlMode.PercentOutput, 0.5);
