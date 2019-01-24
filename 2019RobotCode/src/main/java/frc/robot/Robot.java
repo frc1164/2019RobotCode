@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
   Joystick Stick = new Joystick(0);
 
 
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -104,39 +105,20 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    if(Math.abs(Stick.getRawAxis(0)) >= 0.2){ // Deadband left joystick to prevent continuos motor running
       // set left drive to left joystick value
-      Spark1.set(Stick.getRawAxis(0));
-      Spark2.set(Stick.getRawAxis(0));
-    }// end if
-    
-    else{// stop motors if joystick is centered
-      Spark1.set(0);
-      Spark2.set(0);
-    }// end else
-
-    if(Math.abs(Stick.getRawAxis(2)) >= 0.2){//deadband right joystick to prevent continous motor running
+      Spark3.set(-Stick.getRawAxis(3));
+      Spark4.set(-Stick.getRawAxis(3));
+   
       //set right drive to right joystick value
-      Spark3.set(Stick.getRawAxis(2));
-      Spark4.set(Stick.getRawAxis(2));
-    }//end if
+      Spark1.set(Stick.getRawAxis(1));
+      Spark2.set(Stick.getRawAxis(1));
 
-    else{//stop motors if joystick is centered
-      Spark3.set(0);
-      Spark4.set(0);
-    }// end else
-
-    if (Stick.getRawButton(0) == true) {// move climbing arm up on button press and stop on release
+    if (Stick.getRawButton(4) == true) {// move climbing arm up on button press and stop on release
       Talon1.set(ControlMode.PercentOutput, 0.5);
-      Talon2.set(ControlMode.PercentOutput, 0.5);
-    } else {
-      Talon1.set(ControlMode.PercentOutput, 0);
-      Talon2.set(ControlMode.PercentOutput, 0);
-    }// end ifelse
-
-    if (Stick.getRawButton(2) == true) {
-      Talon1.set(ControlMode.PercentOutput, -0.5);
       Talon2.set(ControlMode.PercentOutput, -0.5);
+    } else if (Stick.getRawButton(2) == true) {
+      Talon1.set(ControlMode.PercentOutput, -0.5);
+      Talon2.set(ControlMode.PercentOutput, 0.5);
     } else {
       Talon1.set(ControlMode.PercentOutput, 0); 
       Talon2.set(ControlMode.PercentOutput, 0);
