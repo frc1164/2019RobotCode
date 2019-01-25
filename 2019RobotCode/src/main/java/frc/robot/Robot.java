@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
 
   TalonSRX Talon1 = new TalonSRX(1); 
   TalonSRX Talon2 = new TalonSRX(2);
+  TalonSRX Talon3 = new TalonSRX(3);
   Spark Spark1 = new Spark(1);
   Spark Spark2 = new Spark(2);
   Spark Spark3 = new Spark(3);
@@ -105,6 +107,16 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
+    //arcade drive 
+
+    //left joystick
+    Spark1.set(Stick.getRawAxis(1));
+    Spark2.set(Stick.getRawAxis(1));
+    Spark3.set(-Stick.getRawAxis(1));
+    Spark4.set(-Stick.getRawAxis(1));
+    Talon3.set(ControlMode.PercentOutput, Stick.getX(Hand.kLeft));
+    
+      /*
       // set left drive to left joystick value
       Spark1.set(Stick.getRawAxis(1));
       Spark2.set(Stick.getRawAxis(1));
@@ -112,7 +124,7 @@ public class Robot extends TimedRobot {
       //set right drive to right joystick
       Spark3.set(-Stick.getRawAxis(3));
       Spark4.set(-Stick.getRawAxis(3));
-
+    */
     if (Stick.getRawButton(4) == true) {// move climbing arm up on button press and stop on release
       Talon1.set(ControlMode.PercentOutput, 0.5);
       Talon2.set(ControlMode.PercentOutput, -0.5);
