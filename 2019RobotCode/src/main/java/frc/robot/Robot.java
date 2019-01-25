@@ -114,7 +114,7 @@ public class Robot extends TimedRobot {
     Spark2.set(Stick.getRawAxis(1));
     Spark3.set(-Stick.getRawAxis(1));
     Spark4.set(-Stick.getRawAxis(1));
-    Talon3.set(ControlMode.PercentOutput, Stick.getX(Hand.kLeft));
+    Talon3.set(ControlMode.PercentOutput, -Stick.getRawAxis(0));
     
       /*
       // set left drive to left joystick value
