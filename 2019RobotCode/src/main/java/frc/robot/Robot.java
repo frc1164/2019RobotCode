@@ -13,7 +13,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -126,11 +125,11 @@ public class Robot extends TimedRobot {
       Spark4.set(-Stick.getRawAxis(3));
     */
     if (Stick.getRawButton(4) == true) {// move climbing arm up on button press and stop on release
-      Talon1.set(ControlMode.PercentOutput, 0.5);
-      Talon2.set(ControlMode.PercentOutput, -0.5);
+      Talon1.set(ControlMode.PercentOutput, 0.1);
+      Talon2.set(ControlMode.PercentOutput, -0.1);
     } else if (Stick.getRawButton(2) == true) {
-      Talon1.set(ControlMode.PercentOutput, -0.5);
-      Talon2.set(ControlMode.PercentOutput, 0.5);
+      Talon1.set(ControlMode.PercentOutput, -0.1);
+      Talon2.set(ControlMode.PercentOutput, 0.1);
     } else {
       Talon1.set(ControlMode.PercentOutput, 0); 
       Talon2.set(ControlMode.PercentOutput, 0);
