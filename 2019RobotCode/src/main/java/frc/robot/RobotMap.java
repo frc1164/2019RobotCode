@@ -25,20 +25,22 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   //Controller Mapping
-  public static final int DriverLeftY = 0;
+  public static final int DriverLeftY = 1;
   public static final int DriverLeftX = 0;
-  public static final int DriverRightY = 0;
-  public static final int DriverRightX = 0;
-  public static final int DriverRightTrigger = 0;
-  public static final int DriverLeftTrigger = 0;
+  public static final int DriverRightY = 5;
+  public static final int DriverRightX = 4;
+  public static final int DriverRightTrigger = 3;
+  public static final int DriverLeftTrigger = 2;
   public static final int driverPort = 0;
 
   //Chassis
-  public static final int LeftMotor1 = 0;
-  public static final int LeftMotor2 = 0;
-  public static final int RightMotor1 = 0;
-  public static final int RightMotor2 = 0;
-  public static final int CenterMotor = 0;
+  public static final int LeftMotor1 = 3;
+  public static final int LeftMotor2 = 4;
+  public static final int RightMotor1 = 1;
+  public static final int RightMotor2 = 2;
+  public static final int CenterMotor = 3;
+
+  public static final double CenterMaxSpeed = 0.5;
 
   //Climber
   public static final int ClimbMotor1 = 0;

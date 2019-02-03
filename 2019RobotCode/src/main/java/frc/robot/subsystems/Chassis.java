@@ -23,14 +23,19 @@ public class Chassis extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private Spark Left1, Left2, Right1;
+  private Spark Left1, Left2, Right1, Right2;
   private TalonSRX Center;
 
   public Chassis(){
     Left1 = new Spark(RobotMap.LeftMotor1);
     Left2 = new Spark(RobotMap.LeftMotor2);
     Right1 = new Spark(RobotMap.RightMotor1);
+    Right2 = new Spark(RobotMap.RightMotor2);
     Center = new TalonSRX(RobotMap.CenterMotor);
+    
+    Right1.setInverted(true);
+    Right2.setInverted(true);
+    Center.setInverted(true);
   }//end default constructor
 
   @Override
@@ -61,7 +66,7 @@ public class Chassis extends Subsystem {
    * @param speed The speed to set
    */
   public void setCenterSpeed(double speed){
-    Center.set(ControlMode.PercentOutput, speed);
+    Center.set(ControlMode.PercentOutput, speed * RobotMap.CenterMaxSpeed);
   }//end setCenterSpeed
 
   public void brake(){

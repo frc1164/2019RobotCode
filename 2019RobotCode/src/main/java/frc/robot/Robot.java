@@ -113,7 +113,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    //Scheduler.getInstance().run();
+    Scheduler.getInstance().run();
+
+    
     //arcade drive 
     //left joystick
     // Spark1.set(Stick.getRawAxis(1));
@@ -130,7 +132,7 @@ public class Robot extends TimedRobot {
       //set right drive to right joystick
       Spark3.set(-Stick.getRawAxis(3));
       Spark4.set(-Stick.getRawAxis(3));
-    */
+    
     if (Stick.getRawButton(4) == true) {// move climbing arm up on button press and stop on release
       Talon1.set(ControlMode.PercentOutput, 0.5);
       Talon2.set(ControlMode.PercentOutput, -0.5);
@@ -140,7 +142,7 @@ public class Robot extends TimedRobot {
     } else {
       Talon1.set(ControlMode.PercentOutput, 0); 
       Talon2.set(ControlMode.PercentOutput, 0);
-    }// end ifelse
+    }// end ifelse*/
 
   }// end teleopPeriodic
 

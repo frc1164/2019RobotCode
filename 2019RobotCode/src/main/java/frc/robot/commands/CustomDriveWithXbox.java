@@ -27,36 +27,36 @@ public class CustomDriveWithXbox extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double LStickValue;
-    	double RStickValue;
+    	double RStickX;
+    	double RStickY;
     	double LTriggerValue;
-    	double RTriggerValue;
+      double RTriggerValue;
+      double LStickX;
     	
     	double LeftMotorValue;
     	double RightMotorValue;
     	
-    	LStickValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverLeftX));
-    	RStickValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightX));
+    	RStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightX));
+    	RStickY = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightY));
     	LTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverLeftTrigger));
       RTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightTrigger));
+      LStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverLeftX));
       
 		 //Drive forward and backward
     	RightMotorValue = RTriggerValue - LTriggerValue;
     	LeftMotorValue = RTriggerValue - LTriggerValue;
     	
       //Turning slowly (Assuming LAxis is the slow turning axis)
-      RightMotorValue = (1 - LStickValue) * RightMotorValue;
-      LeftMotorValue = (1 + LStickValue) * LeftMotorValue;
+      RightMotorValue = (1 - RStickX) * RightMotorValue;
+      LeftMotorValue = (1 + RStickX) * LeftMotorValue;
 
       //Turning quickly (Assuming RAxis is the fast turning axis)
-      RightMotorValue = RightMotorValue - (0.5 * RStickValue);
-      LeftMotorValue = LeftMotorValue + (0.5 * RStickValue);
+      RightMotorValue = RightMotorValue - (0.5 * RStickY);
+      LeftMotorValue = LeftMotorValue + (0.5 * RStickY);
     		
-		
 		  Robot.robotChassis.setRightSpeed(RightMotorValue);
-		  Robot.robotChassis.setLeftSpeed(LeftMotorValue);
-
-    	
+      Robot.robotChassis.setLeftSpeed(LeftMotorValue);
+      Robot.robotChassis.setCenterSpeed(LStickX);
     }
 
     // Make this return true when this Command no longer needs to run execute()
