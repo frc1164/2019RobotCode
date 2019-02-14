@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.LineSensor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +24,7 @@ import frc.robot.subsystems.Chassis;
  */
 public class Robot extends TimedRobot {
   public static Chassis robotChassis = new Chassis();
+  public static LineSensor robotLineSensor = new LineSensor();
 
   TalonSRX Talon1 = new TalonSRX(1);
   TalonSRX Talon2 =new TalonSRX(2);
@@ -34,7 +36,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-   
   }
 
   /**
@@ -47,6 +48,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    robotLineSensor.readLongString();
   }
 
   /**
