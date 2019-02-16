@@ -70,4 +70,14 @@ public class LineSensor extends Subsystem {
       }//end for
       
     }//end readLongString
+
+    public double Array1Offset(){
+      return 0;
+      //TODO: update
+    }
+
+    public double Array2Offset(){
+      return 0;
+      //TODO:update
+    }
 }// of Subsystem LineSeneor

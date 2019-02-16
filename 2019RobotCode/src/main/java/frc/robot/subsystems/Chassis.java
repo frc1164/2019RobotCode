@@ -112,4 +112,9 @@ public class Chassis extends Subsystem {
     return rearSolenoid.get();
   }//end getRearSolenoidPosition
 
+  public double getUltrasonic(){
+    return 0;
+    //TODO: update
+  }
+
 }//end Chassis class
