@@ -12,7 +12,7 @@ package frc.robot.logic;
  */
 public class PoseGenerator {
     //If data is invalid
-    private static final int invalid = -1000;
+    public static final int invalid = -1000;
 
     //If ultrasonic is too far
     private static final double ultrasonicMax = 1000;//TODO: update
