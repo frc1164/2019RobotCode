@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.CustomDriveWithXbox;
@@ -25,6 +26,8 @@ public class Chassis extends Subsystem {
 
   private Spark Left1, Left2, Right1, Right2;
   private TalonSRX Center;
+  private boolean sensorRead[] = new boolean[40];
+
 
   public Chassis(){
     Left1 = new Spark(RobotMap.LeftMotor1);
@@ -33,9 +36,13 @@ public class Chassis extends Subsystem {
     Right2 = new Spark(RobotMap.RightMotor2);
     Center = new TalonSRX(RobotMap.CenterMotor);
     
+
+
     Right1.setInverted(true);
     Right2.setInverted(true);
     Center.setInverted(true);
+
+    
   }//end default constructor
 
   @Override
@@ -43,6 +50,7 @@ public class Chassis extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new CustomDriveWithXbox(OI.getDriverStick()));
+
   }//end initDefaultCommand
 
   /**
@@ -74,5 +82,25 @@ public class Chassis extends Subsystem {
     setRightSpeed(0);
     setCenterSpeed(0);
   }//end brake
+
+  public void convertString(String arduinoInput){
+   
+    int i = 0;
+   do{
+
+      if(arduinoInput.charAt(i) == 't'){
+          sensorRead[i] = true;
+      }sensorRead[i] = false;
+      
+      SmartDashboard.putBoolean("Sensor" + i, sensorRead[i]);
+      i++;
+    }while(arduinoInput.charAt(i) != 'l');
+    
+  }
+
+  public boolean[] getSensorRead(){
+
+    return this.sensorRead;
+  }
 
 }//end Chassis class
