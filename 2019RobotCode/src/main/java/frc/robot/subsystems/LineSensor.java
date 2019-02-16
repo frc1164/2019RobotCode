@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -20,7 +19,6 @@ public class LineSensor extends Subsystem {
 
   private static final int BAUDRATE = 9600;
   private static final int numSensors = 20;
-  private char seperator;
   private int bufferSize = 1;
   private SerialPort arduino;
   private Double prevValue;
@@ -32,7 +30,6 @@ public class LineSensor extends Subsystem {
     prevValue = 0.0;
     endLineChar = '\n';
     maxStringLen = 6;
-    seperator = '\t';
   }// of default constructor
 
   @Override
@@ -66,16 +63,11 @@ public class LineSensor extends Subsystem {
 
 
     public void readLongString(){
-      String[] sensorValues = new String[numSensors];
+      char[] sensorValues = new char[numSensors];
       String dataIn = getString();
-      double offset;
       for(int i = 0; i < numSensors; i++){
-        sensorValues[i] = dataIn.substring(0, dataIn.indexOf(seperator));
-        dataIn = dataIn.substring(dataIn.indexOf(seperator)+1);
+        sensorValues[i] = dataIn.charAt(i);
       }//end for
-      dataIn = dataIn.substring(0, dataIn.indexOf(endLineChar));
-      offset = Double.parseDouble(dataIn);
-      SmartDashboard.putStringArray("LineSensor array", sensorValues);
-      SmartDashboard.putNumber("offset", offset);
-    }//end sensorTest
+      
+    }//end readLongString
 }// of Subsystem LineSeneor
