@@ -83,7 +83,7 @@ public class Chassis extends Subsystem {
     setCenterSpeed(0);
   }//end brake
 
-  public void convertString(String arduinoInput){
+  public void arduinoInputToSmartDashboard(String arduinoInput){
    
     int i = 0;
    do{
