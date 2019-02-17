@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.findLine;
 import frc.robot.commands.raiseFront;
 import frc.robot.commands.raiseRear;
 
@@ -24,9 +25,13 @@ public class OI {
   public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.DriverRightShoulder);
   public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.DriverLeftShoulder);
 
+  public static Button target = new JoystickButton(driverStick, RobotMap.DriverYButton);
+
   public OI(){
     toggleChassisFront.whenPressed(new raiseFront(!Robot.robotChassis.geFrontSolenoidPosition()));
     toggleChassisRear.whenPressed(new raiseRear(!Robot.robotChassis.getRearSolenoidPosition()));
+    
+    target.whileHeld(new findLine());
   }//end constructor
 
   public static double deadband(double tolerance, double value){

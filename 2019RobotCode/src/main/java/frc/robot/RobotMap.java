@@ -33,7 +33,12 @@ public class RobotMap {
   public static final int DriverLeftTrigger = 2;
   public static final int DriverRightShoulder = 6;
   public static final int DriverLeftShoulder = 5;
+  public static final int DriverYButton = 0; //TODO: update button mapping for DriverController
+  public static final int DriverXButton = 0;
+  public static final int DriverAButton = 0;
+  public static final int DriverBButton = 0;
   public static final int driverPort = 0;
+
 
   //Chassis
   public static final int LeftMotor1 = 3;
