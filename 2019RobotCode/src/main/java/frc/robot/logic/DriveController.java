@@ -51,9 +51,12 @@ public class DriveController{
     ThetaGoal = Theta_Goal;
   }//end constructor
   
+  /**
+   * 
+   */
   public void update(){
-    poseMaker.update(Robot.robotLineSensor.Array1Offset(), 
-      Robot.robotLineSensor.Array2Offset(), 
+    poseMaker.update(Robot.robotLineSensor.getArray1(), 
+      Robot.robotLineSensor.getArray2(), 
       Robot.robotChassis.getUltrasonic());
     double currX = poseMaker.getX();
     double currY = poseMaker.getY();

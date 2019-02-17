@@ -48,19 +48,6 @@ public class LineSensor extends Subsystem {
     //return raw data as byte array
     return arduino.read(arduino.getBytesReceived());
   }//end getRaw
- 
-  public Double getDouble(){
-    String dataIn = getString();
-    if(dataIn.length() < maxStringLen*2) return prevValue; //if data is too short to parse use last recorded value
-
-    int index;
-    index = dataIn.lastIndexOf(endLineChar);
-    dataIn = dataIn.substring(0,index);
-    index = dataIn.lastIndexOf(endLineChar);
-    dataIn = dataIn.substring(index+1);
-    return Double.parseDouble(dataIn);
-    }//end getDouble
-
 
     public void readLongString(){
       char[] sensorValues = new char[numSensors];
@@ -71,12 +58,12 @@ public class LineSensor extends Subsystem {
       
     }//end readLongString
 
-    public double Array1Offset(){
+    public double getArray1(){
       return 0;
       //TODO: update Array1 Offset in LineSensor subsystem
     }
 
-    public double Array2Offset(){
+    public double getArray2(){
       return 0;
       //TODO:update Array2 Offset in LineSensor subsystem
     }
