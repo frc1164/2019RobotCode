@@ -53,9 +53,9 @@ public class CustomDriveWithXbox extends Command {
       RightMotorValue = RightMotorValue - (0.5 * RStickY);
       LeftMotorValue = LeftMotorValue + (0.5 * RStickY);
     		
-		  Robot.robotChassis.setRightSpeed(RightMotorValue);
-      Robot.robotChassis.setLeftSpeed(LeftMotorValue);
-      Robot.robotChassis.setCenterSpeed(LStickX);
+		  Robot.robotChassis.setRightSpeed(RightMotorValue*0.35);
+      Robot.robotChassis.setLeftSpeed(LeftMotorValue*.35);
+      Robot.robotChassis.setCenterSpeed(LStickX*.35);
     }
 
     // Make this return true when this Command no longer needs to run execute()

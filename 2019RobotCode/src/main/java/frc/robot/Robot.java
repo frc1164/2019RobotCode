@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    robotLineSensor.readLongString();
+    //robotLineSensor.readLongString();
   }
 
   /**

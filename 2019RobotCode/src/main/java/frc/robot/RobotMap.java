@@ -36,11 +36,11 @@ public class RobotMap {
   public static final int driverPort = 0;
 
   //Chassis
-  public static final int LeftMotor1 = 3;
-  public static final int LeftMotor2 = 4;
-  public static final int RightMotor1 = 1;
-  public static final int RightMotor2 = 2;
-  public static final int CenterMotor = 3;
+  public static final int LeftMotorFront = 7;
+  public static final int LeftMotorRear = 8;
+  public static final int RightMotorFront = 6;
+  public static final int RightMotorRear = 5;
+  public static final int CenterMotor = 4;
 
   public static final double CenterMaxSpeed = 0.5;
 

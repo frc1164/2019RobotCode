@@ -8,10 +8,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.raiseFront;
 import frc.robot.commands.raiseRear;
+import frc.robot.commands.toggleFront;
+import frc.robot.commands.toggleRear;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -25,8 +28,10 @@ public class OI {
   public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.DriverLeftShoulder);
 
   public OI(){
-    toggleChassisFront.whenPressed(new raiseFront(!Robot.robotChassis.geFrontSolenoidPosition()));
-    toggleChassisRear.whenPressed(new raiseRear(!Robot.robotChassis.getRearSolenoidPosition()));
+    toggleChassisFront.whenPressed(new raiseFront(Value.kForward));
+    toggleChassisFront.whenReleased(new raiseFront(Value.kReverse));
+    toggleChassisRear.whenPressed(new raiseRear(Value.kForward));
+    toggleChassisRear.whenReleased(new raiseRear(Value.kReverse));
   }//end constructor
 
   public static double deadband(double tolerance, double value){

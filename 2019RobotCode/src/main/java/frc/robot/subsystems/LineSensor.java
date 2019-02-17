@@ -62,14 +62,14 @@ public class LineSensor extends Subsystem {
     }//end getDouble
 
 
-    public void readLongString(){
-      char[] sensorValues = new char[numSensors];
-      String dataIn = getString();
-      for(int i = 0; i < numSensors; i++){
-        sensorValues[i] = dataIn.charAt(i);
-      }//end for
+    // public void readLongString(){
+    //   char[] sensorValues = new char[numSensors];
+    //   String dataIn = getString();
+    //   for(int i = 0; i < numSensors; i++){
+    //     sensorValues[i] = dataIn.charAt(i);
+    //   }//end for
       
-    }//end readLongString
+    // }//end readLongString
 
     public double Array1Offset(){
       return 0;
