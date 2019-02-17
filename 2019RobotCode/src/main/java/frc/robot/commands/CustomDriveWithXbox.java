@@ -35,11 +35,11 @@ public class CustomDriveWithXbox extends Command {
     	double LeftMotorValue;
     	double RightMotorValue;
     	
-    	RStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightX));
-    	RStickY = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightY));
-    	LTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverLeftTrigger));
-      RTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightTrigger));
-      LStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverLeftX));
+    	RStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX));
+    	RStickY = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightY));
+    	LTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftTrigger));
+      RTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightTrigger));
+      LStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftX));
       
 		 //Drive forward and backward
     	RightMotorValue = RTriggerValue - LTriggerValue;

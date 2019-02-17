@@ -46,7 +46,7 @@ public class Chassis extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new CustomDriveWithXbox(OI.getDriverStick()));
+    setDefaultCommand(new CustomDriveWithXbox(OI.driverStick));
   }//end initDefaultCommand
 
   /**

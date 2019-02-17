@@ -25,15 +25,22 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   //Controller Mapping
-  public static final int DriverLeftY = 1;
-  public static final int DriverLeftX = 0;
-  public static final int DriverRightY = 5;
-  public static final int DriverRightX = 4;
-  public static final int DriverRightTrigger = 3;
-  public static final int DriverLeftTrigger = 2;
-  public static final int DriverRightShoulder = 6;
-  public static final int DriverLeftShoulder = 5;
+  public static final int XboxLeftY = 1;
+  public static final int XboxLeftX = 0;
+  public static final int XboxRightY = 5;
+  public static final int XboxRightX = 4;
+  public static final int XboxRightTrigger = 3;
+  public static final int XboxLeftTrigger = 2;
+  public static final int XboxRightShoulder = 6;
+  public static final int XboxLeftShoulder = 5;
   public static final int driverPort = 0;
+
+  public static final int PilotLargeX = 0;//TODO: update joystick mapping for Pilot
+  public static final int PilotLargeY = 0;
+  public static final int PilotSmallX = 0;
+  public static final int PilotSmallY = 0;
+
+  
 
   //Chassis
   public static final int LeftMotorFront = 7;

@@ -13,8 +13,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.raiseFront;
 import frc.robot.commands.raiseRear;
-import frc.robot.commands.toggleFront;
-import frc.robot.commands.toggleRear;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -24,8 +23,8 @@ public class OI {
 
   public static Joystick driverStick = new Joystick(RobotMap.driverPort);
   
-  public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.DriverRightShoulder);
-  public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.DriverLeftShoulder);
+  public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.XboxRightShoulder);
+  public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.XboxLeftShoulder);
 
   public OI(){
     toggleChassisFront.whenPressed(new raiseFront(Value.kForward));
@@ -37,7 +36,4 @@ public class OI {
   public static double deadband(double tolerance, double value){
     return (Math.abs(value) <= tolerance) ? 0 : value;
   }//end deadband
-  public static Joystick getDriverStick(){
-    return driverStick;
-  }//end getDriverStick
-}
+}//end OI
