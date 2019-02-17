@@ -31,6 +31,8 @@ public class RobotMap {
   public static final int DriverRightX = 4;
   public static final int DriverRightTrigger = 3;
   public static final int DriverLeftTrigger = 2;
+  public static final int DriverRightShoulder = 6;
+  public static final int DriverLeftShoulder = 5;
   public static final int driverPort = 0;
 
   //Chassis
@@ -43,9 +45,10 @@ public class RobotMap {
   public static final double CenterMaxSpeed = 0.5;
 
   //Climber
+  //TODO: Map Solenoids
   public static final int ClimbMotor1 = 0;
   public static final int ClimbMotor2 = 0;
+  public static final int ClimbFrontSolenoid = 0;
+  public static final int ClimbRearSolenoid = 0;
 
-
-
-}
+}//end class RobotMap

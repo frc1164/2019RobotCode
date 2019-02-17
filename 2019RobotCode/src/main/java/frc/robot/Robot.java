@@ -7,17 +7,11 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Chassis;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.LineSensor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,10 +22,8 @@ import frc.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends TimedRobot {
   public static Chassis robotChassis = new Chassis();
-
-  TalonSRX Talon1 = new TalonSRX(1);
-  TalonSRX Talon2 =new TalonSRX(2);
-  Joystick Stick = new Joystick(0);
+  public static LineSensor robotLineSensor = new LineSensor();
+  public static OI m_OI = new OI();
   
   /**
    * This function is run when the robot is first started up and should be
@@ -39,7 +31,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-   
   }
 
   /**
@@ -52,6 +43,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    robotLineSensor.readLongString();
   }
 
   /**
@@ -114,35 +106,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-
-    
-    //arcade drive 
-    //left joystick
-    // Spark1.set(Stick.getRawAxis(1));
-    // Spark2.set(Stick.getRawAxis(1));
-    // Spark3.set(-Stick.getRawAxis(1));
-    // Spark4.set(-Stick.getRawAxis(1));
-    // Talon3.set(ControlMode.PercentOutput, -Stick.getRawAxis(0));
-    
-      /*
-      // set left drive to left joystick value
-      Spark1.set(Stick.getRawAxis(1));
-      Spark2.set(Stick.getRawAxis(1));
-   
-      //set right drive to right joystick
-      Spark3.set(-Stick.getRawAxis(3));
-      Spark4.set(-Stick.getRawAxis(3));
-    
-    if (Stick.getRawButton(4) == true) {// move climbing arm up on button press and stop on release
-      Talon1.set(ControlMode.PercentOutput, 0.5);
-      Talon2.set(ControlMode.PercentOutput, -0.5);
-    } else if (Stick.getRawButton(2) == true) {
-      Talon1.set(ControlMode.PercentOutput, -0.5);
-      Talon2.set(ControlMode.PercentOutput, 0.5);
-    } else {
-      Talon1.set(ControlMode.PercentOutput, 0); 
-      Talon2.set(ControlMode.PercentOutput, 0);
-    }// end ifelse*/
 
   }// end teleopPeriodic
 
