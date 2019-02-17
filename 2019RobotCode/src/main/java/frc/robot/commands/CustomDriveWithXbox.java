@@ -27,7 +27,6 @@ public class CustomDriveWithXbox extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double RStickX;
-    	double RStickY;
     	double LTriggerValue;
       double RTriggerValue;
       double LStickX;

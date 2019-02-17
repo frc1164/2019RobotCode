@@ -18,7 +18,6 @@ public class LineSensor extends Subsystem {
   // here. Call these from Commands.
 
   private static final int BAUDRATE = 9600;
-  private static final int numSensors = 20;
   private int bufferSize = 1;
   private SerialPort arduino;
   private Double prevValue;
