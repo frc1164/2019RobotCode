@@ -15,10 +15,10 @@ import frc.robot.Robot;
 public class DriveController{
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  PoseGenerator poseMaker = new PoseGenerator();
-  PID XPID = new PID();
-  PID YPID = new PID();
-  PID ThetaPID = new PID();
+  private PoseGenerator poseMaker = new PoseGenerator();
+  private PID XPID = new PID();
+  private PID YPID = new PID();
+  private PID ThetaPID = new PID();
 
   private double XGoal, YGoal, ThetaGoal, XOutput, YOutput, ThetaOutput;
 
@@ -100,5 +100,19 @@ public class DriveController{
   public double getThetaOutput(){
     return ThetaOutput;
   }//end getThetaOuptut
-  
+
+  /**
+   * Reset X PID Controller
+   */
+  public void resetXPID(){
+    XPID.reset();
+  }//end resetXPID
+
+  /**
+   * Set the gains of the X PID Controller
+   */
+  public void setXGains(double P, double I, double D){
+    XPID.setGains(P, I, D);
+  }//end setXGains
+
 }//DriveController

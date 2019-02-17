@@ -22,9 +22,6 @@ public class LineSensor extends Subsystem {
   private final int array2_numSensors = 20;
   private int bufferSize = 1;
   private SerialPort arduino;
-  private Double prevValue;
-  private char endLineChar;
-  private int maxStringLen;
   //TODO: update offsets of each sensor
   private double[] array1_offsets;
   private double[] array2_offsets;
@@ -32,9 +29,6 @@ public class LineSensor extends Subsystem {
   public LineSensor(){
     arduino = new SerialPort(BAUDRATE, SerialPort.Port.kUSB1);
     arduino.setReadBufferSize(bufferSize);
-    prevValue = 0.0;
-    endLineChar = '\n';
-    maxStringLen = 6;
   }// of default constructor
 
   @Override
@@ -93,7 +87,7 @@ public class LineSensor extends Subsystem {
     //Find all positions where white was detected
     for(i = array1_numSensors; i < array2_numSensors; i++){
       if(data.charAt(i) == 't'){
-        lineDetected[j] = array1_offsets[i];
+        lineDetected[j] = array2_offsets[i];
         j++;
       }//end if
     }//end for
