@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.CustomDriveWithXbox;
+import frc.robot.commands.DriveLayout1;
 
 /**
  * Robot Chassis subsystem
@@ -46,7 +47,7 @@ public class Chassis extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new CustomDriveWithXbox(OI.driverStick));
+    setDefaultCommand(new DriveLayout1(OI.driverStick));
   }//end initDefaultCommand
 
   /**

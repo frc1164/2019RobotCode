@@ -36,7 +36,6 @@ public class CustomDriveWithXbox extends Command {
     	double RightMotorValue;
     	
     	RStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX));
-    	RStickY = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightY));
     	LTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftTrigger));
       RTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightTrigger));
       LStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftX));
@@ -44,14 +43,10 @@ public class CustomDriveWithXbox extends Command {
 		 //Drive forward and backward
     	RightMotorValue = RTriggerValue - LTriggerValue;
     	LeftMotorValue = RTriggerValue - LTriggerValue;
-    	
-      //Turning slowly (Assuming LAxis is the slow turning axis)
-      RightMotorValue = (1 - RStickX) * RightMotorValue;
-      LeftMotorValue = (1 + RStickX) * LeftMotorValue;
 
       //Turning quickly (Assuming RAxis is the fast turning axis)
-      RightMotorValue = RightMotorValue - (0.5 * RStickY);
-      LeftMotorValue = LeftMotorValue + (0.5 * RStickY);
+      RightMotorValue = RightMotorValue - (0.5 * RStickX);
+      LeftMotorValue = LeftMotorValue + (0.5 * RStickX);
     		
 		  Robot.robotChassis.setRightSpeed(RightMotorValue*0.35);
       Robot.robotChassis.setLeftSpeed(LeftMotorValue*.35);

@@ -30,12 +30,12 @@ public class DriveWithPilot1 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.robotChassis.setCenterSpeed(OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX)));
-    RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightY));
-    LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightY));
+    Robot.robotChassis.setCenterSpeed(OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotLargeX)));
+    RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotLargeY));
+    LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotLargeY));
 
-    RightMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftX));
-    LeftMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftX));
+    RightMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotSmallX));
+    LeftMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotSmallX));
 
     Robot.robotChassis.setLeftSpeed(LeftMotors);
     Robot.robotChassis.setRightSpeed(RightMotors);
