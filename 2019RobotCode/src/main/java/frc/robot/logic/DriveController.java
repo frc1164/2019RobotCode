@@ -52,7 +52,7 @@ public class DriveController{
   }//end constructor
   
   /**
-   * 
+   * Update the DriveController goals and current positions
    */
   public void update(){
     poseMaker.update(Robot.robotLineSensor.getArray1(), 
