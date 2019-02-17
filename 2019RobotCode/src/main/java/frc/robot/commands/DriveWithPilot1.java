@@ -37,8 +37,8 @@ public class DriveWithPilot1 extends Command {
     RightMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
     LeftMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
 
-    Robot.robotChassis.setLeftSpeed(LeftMotors);
-    Robot.robotChassis.setRightSpeed(RightMotors);
+    Robot.robotChassis.setLeftSpeed(LeftMotors * stick.getRawAxis(RobotMap.PilotThrottle));
+    Robot.robotChassis.setRightSpeed(RightMotors * stick.getRawAxis(RobotMap.PilotThrottle));
   }
 
   // Make this return true when this Command no longer needs to run execute()

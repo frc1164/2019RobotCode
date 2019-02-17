@@ -35,11 +35,10 @@ public class RobotMap {
   public static final int XboxLeftShoulder = 5;
   public static final int driverPort = 0;
 
-  public static final int PilotX = 0;//TODO: update joystick mapping for Pilot
-  public static final int PilotY = 0;
-  public static final int PilotRotate = 0;
-
-  
+  public static final int PilotX = 0;
+  public static final int PilotY = 1;
+  public static final int PilotRotate = 2;
+  public static final int PilotThrottle = 3;
 
   //Chassis
   public static final int LeftMotorFront = 7;
