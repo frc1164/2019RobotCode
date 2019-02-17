@@ -20,9 +20,7 @@ public class DriveController{
   PID YPID = new PID();
   PID ThetaPID = new PID();
 
-  private double XGoal;
-  private double YGoal;
-  private double ThetaGoal;
+  private double XGoal, YGoal, ThetaGoal, XOutput, YOutput, ThetaOutput;
 
   /**
    * Create DriveController instance with Default goals
@@ -64,21 +62,43 @@ public class DriveController{
 
 
     if(currX != PoseGenerator.invalid){
-      XPID.update(XGoal, currX);
+      XOutput = XPID.update(XGoal, currX);
     } else{
       XPID.reset();
     }
     if(currY != PoseGenerator.invalid){
-      YPID.update(YGoal, currY);
+      YOutput = YPID.update(YGoal, currY);
     } else{
       YPID.reset();
     }
     if(currTheta != PoseGenerator.invalid){
-      ThetaPID.update(ThetaGoal, currTheta);
+      ThetaOutput = ThetaPID.update(ThetaGoal, currTheta);
     } else{
       ThetaPID.reset();
     }
 
   }//end update
+
+  /**
+   * @return Output of X PID Controller
+   */
+  public double getXOutput(){
+    return XOutput;
+  }//end getXOutput
+
+  /**
+   * @return Output of Y PID Controller
+   */
+  public double getYOutput(){
+    return YOutput;
+  }//end getYOutput
+
+  /**
+   * 
+   * @return Output of Theta PID Controller
+   */
+  public double getThetaOutput(){
+    return ThetaOutput;
+  }//end getThetaOuptut
   
 }//DriveController
