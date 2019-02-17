@@ -23,6 +23,33 @@ public class DriveController{
   private double XGoal;
   private double YGoal;
   private double ThetaGoal;
+
+  /**
+   * Create DriveController instance with Default goals
+   * <ul>
+   *  <li>XGoal = 0</li>
+   *  <li>YGoal = 0</li>
+   *  <li>ThetaGoal = 0</li>
+   * </ul> 
+   */
+  public DriveController(){
+    //TODO: Update DriveController Goals
+    XGoal = 0;
+    YGoal = 0;
+    ThetaGoal = 0;
+  }//end default constructor
+
+  /**
+   * Create DriveController instance with custom goals
+   * @param X_Goal Desired horizontal position, relative to robot center
+   * @param Y_Goal Desired distance from wall, relative to robot center
+   * @param Theta_Goal Desired angle to wall, relative to robot center
+   */
+  public DriveController(double X_Goal, double Y_Goal, double Theta_Goal){
+    XGoal = X_Goal;
+    YGoal = Y_Goal;
+    ThetaGoal = Theta_Goal;
+  }//end constructor
   
   public void update(){
     poseMaker.update(Robot.robotLineSensor.Array1Offset(), 

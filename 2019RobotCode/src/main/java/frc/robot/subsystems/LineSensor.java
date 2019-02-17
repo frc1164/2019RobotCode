@@ -73,11 +73,11 @@ public class LineSensor extends Subsystem {
 
     public double Array1Offset(){
       return 0;
-      //TODO: update
+      //TODO: update Array1 Offset in LineSensor subsystem
     }
 
     public double Array2Offset(){
       return 0;
-      //TODO:update
+      //TODO:update Array2 Offset in LineSensor subsystem
     }
 }// of Subsystem LineSeneor
