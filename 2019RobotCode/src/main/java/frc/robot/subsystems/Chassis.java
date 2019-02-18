@@ -8,33 +8,37 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.CustomDriveWithXbox;
 
 /**
- * Add your docs here.
+ * Robot Chassis subsystem
  */
 public class Chassis extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private Spark Left1, Left2, Right1, Right2;
-  private TalonSRX Center;
+  private VictorSPX LeftFront, LeftRear, RightFront, RightRear, Center;
+  private DoubleSolenoid frontSolenoid, rearSolenoid;
 
   public Chassis(){
-    Left1 = new Spark(RobotMap.LeftMotor1);
-    Left2 = new Spark(RobotMap.LeftMotor2);
-    Right1 = new Spark(RobotMap.RightMotor1);
-    Right2 = new Spark(RobotMap.RightMotor2);
-    Center = new TalonSRX(RobotMap.CenterMotor);
+    LeftFront = new VictorSPX(RobotMap.LeftMotorFront);
+    LeftRear = new VictorSPX(RobotMap.LeftMotorRear);
+    RightFront = new VictorSPX(RobotMap.RightMotorFront);
+    RightRear = new VictorSPX(RobotMap.RightMotorRear);
+    Center = new VictorSPX(RobotMap.CenterMotor);
+
+    frontSolenoid = new DoubleSolenoid(4, 5);
+    rearSolenoid = new DoubleSolenoid(6, 7);
     
-    Right1.setInverted(true);
-    Right2.setInverted(true);
+    RightFront.setInverted(true);
+    RightRear.setInverted(true);
     Center.setInverted(true);
   }//end default constructor
 
@@ -50,15 +54,16 @@ public class Chassis extends Subsystem {
    * @param speed The speed to set
    */
   public void setLeftSpeed(double speed){
-    Left1.set(speed);
-    Left2.set(speed);
+    LeftFront.set(ControlMode.PercentOutput, speed);
+    LeftRear.set(ControlMode.PercentOutput, speed);
   }//end setLeftSpeed
   /**
    * Set the speed of the right two motors
    * @param speed The speed to set
    */
   public void setRightSpeed(double speed){
-    Right1.set(speed);
+    RightFront.set(ControlMode.PercentOutput, speed);
+    RightRear.set(ControlMode.PercentOutput, speed);
   }//end setRightSpeed
 
   /**
@@ -69,10 +74,50 @@ public class Chassis extends Subsystem {
     Center.set(ControlMode.PercentOutput, speed * RobotMap.CenterMaxSpeed);
   }//end setCenterSpeed
 
+  /**
+   * Set all the motors on the Chassis to 0
+   */
   public void brake(){
     setLeftSpeed(0);
     setRightSpeed(0);
     setCenterSpeed(0);
   }//end brake
+
+  /**
+   * Set the position of the front solenoid. 
+   * @param pos The position. True sets to on, false sets to off 
+   */
+  public void setFrontSolenoid(Value val){
+    frontSolenoid.set(val);
+  }//end setFrontSolenoid
+  
+  /**
+   * Set the position of the rear solenoid
+   * @param pos The position. True sets to on, false sets to off
+   */
+  public void setRearSolenoid(Value val){
+    rearSolenoid.set(val);
+  }//end setRearSolenoid
+
+  /**
+   * Get the current position of the front solenoid
+   * @return True if the solenoid is on. False if the solenoid is off
+   */
+  public boolean geFrontSolenoidPosition(){
+    return (frontSolenoid.get() == Value.kForward);
+  }//end getRearSolenoidPosition
+  
+  /**
+   * Get the current position of the rear solenoid.
+   * @return True if the solenoid is on. False if the solenoid is off.
+   */
+  public boolean getRearSolenoidPosition(){
+    return (rearSolenoid.get() == Value.kForward);
+  }//end getRearSolenoidPosition
+
+  public double getUltrasonic(){
+    return 0;
+    //TODO: update
+  }
 
 }//end Chassis class
