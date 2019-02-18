@@ -17,6 +17,7 @@ import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.CustomDriveWithXbox;
 import frc.robot.commands.DriveLayout1;
+import frc.robot.commands.DriveLayout2;
 
 /**
  * Robot Chassis subsystem
@@ -38,8 +39,8 @@ public class Chassis extends Subsystem {
     frontSolenoid = new DoubleSolenoid(4, 5);
     rearSolenoid = new DoubleSolenoid(6, 7);
     
-    RightFront.setInverted(true);
-    RightRear.setInverted(true);
+    LeftFront.setInverted(true);
+    LeftRear.setInverted(true);
     Center.setInverted(true);
   }//end default constructor
 
@@ -47,7 +48,7 @@ public class Chassis extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new DriveLayout1(OI.driverStick));
+    setDefaultCommand(new DriveLayout2(OI.driverStick));
   }//end initDefaultCommand
 
   /**

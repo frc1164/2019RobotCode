@@ -34,8 +34,8 @@ public class DriveWithPilot1 extends Command {
     RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
     LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
 
-    RightMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
-    LeftMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
+    RightMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
+    LeftMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
 
     Robot.robotChassis.setLeftSpeed(LeftMotors * stick.getRawAxis(RobotMap.PilotThrottle));
     Robot.robotChassis.setRightSpeed(RightMotors * stick.getRawAxis(RobotMap.PilotThrottle));

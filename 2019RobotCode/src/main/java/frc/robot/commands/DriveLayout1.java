@@ -36,8 +36,8 @@ public class DriveLayout1 extends Command {
     RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftY));
     LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftY));
 
-    RightMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX));
-    LeftMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX));
+    RightMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX));
+    LeftMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX));
 
     Robot.robotChassis.setLeftSpeed(LeftMotors);
     Robot.robotChassis.setRightSpeed(RightMotors);
