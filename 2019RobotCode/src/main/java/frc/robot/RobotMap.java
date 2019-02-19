@@ -47,7 +47,7 @@ public class RobotMap {
   public static final int RightMotorRear = 5;
   public static final int CenterMotor = 4;
 
-  public static final double CenterMaxSpeed = 0.5;
+  public static final double CenterMaxSpeed = 1;
 
   //Climber
   //TODO: Map Solenoids
