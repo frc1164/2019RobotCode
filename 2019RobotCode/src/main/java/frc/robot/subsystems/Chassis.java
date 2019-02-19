@@ -26,8 +26,8 @@ public class Chassis extends Subsystem {
 
   private Spark Left1, Left2, Right1, Right2;
   private TalonSRX Center;
-  private boolean sensorRead[] = new boolean[40];
-
+  private boolean sensorRead[];
+  private String testOne = "ftftftftftftfttftftln", testTwo = "ffffffttttttftftftftftftftln";
 
   public Chassis(){
     Left1 = new Spark(RobotMap.LeftMotor1);
@@ -36,7 +36,7 @@ public class Chassis extends Subsystem {
     Right2 = new Spark(RobotMap.RightMotor2);
     Center = new TalonSRX(RobotMap.CenterMotor);
     
-
+    arduinoInputToSmartDashboard(testOne);
 
     Right1.setInverted(true);
     Right2.setInverted(true);
@@ -84,7 +84,7 @@ public class Chassis extends Subsystem {
   }//end brake
 
   public void arduinoInputToSmartDashboard(String arduinoInput){
-   
+    sensorRead = new boolean[arduinoInput.length()];
     int i = 0;
    do{
 
