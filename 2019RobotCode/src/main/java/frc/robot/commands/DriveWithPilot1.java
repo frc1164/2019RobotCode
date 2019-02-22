@@ -17,9 +17,11 @@ import frc.robot.RobotMap;
 public class DriveWithPilot1 extends Command {
   double RightMotors, LeftMotors;
   Joystick stick;
-  public DriveWithPilot1() {
+  public DriveWithPilot1(Joystick joystick) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.robotChassis);
+    stick = joystick;
   }
 
   // Called just before this Command runs the first time

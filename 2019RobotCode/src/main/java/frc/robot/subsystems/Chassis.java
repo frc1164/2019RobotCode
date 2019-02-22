@@ -18,6 +18,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.CustomDriveWithXbox;
 import frc.robot.commands.DriveLayout1;
 import frc.robot.commands.DriveLayout2;
+import frc.robot.commands.DriveWithPilot1;
 
 /**
  * Robot Chassis subsystem
@@ -48,7 +49,7 @@ public class Chassis extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new DriveLayout2(OI.driverStick));
+    setDefaultCommand(new DriveWithPilot1(OI.driverStick));
   }//end initDefaultCommand
 
   /**

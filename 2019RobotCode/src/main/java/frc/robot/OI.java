@@ -27,8 +27,8 @@ public class OI {
   public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.XboxLeftShoulder);
 
   public OI(){
-    toggleChassisFront.whenPressed(new raiseFront(Value.kForward));
-    toggleChassisFront.whenReleased(new raiseFront(Value.kReverse));
+    toggleChassisFront.whenPressed(new raiseFront(Value.kReverse));
+    toggleChassisFront.whenReleased(new raiseFront(Value.kForward));
     toggleChassisRear.whenPressed(new raiseRear(Value.kForward));
     toggleChassisRear.whenReleased(new raiseRear(Value.kReverse));
   }//end constructor
