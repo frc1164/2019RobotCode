@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.CustomDriveWithXbox;
+import frc.robot.commands.DriveLayout1;
+import frc.robot.commands.DriveWithPilot1;
 
 /**
  * Robot Chassis subsystem
@@ -24,7 +26,7 @@ public class Chassis extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private VictorSPX LeftFront, LeftRear, RightFront, RightRear, Center;
+  private VictorSPX LeftFront, LeftRear, RightFront, RightRear, Center1, Center2;
   private DoubleSolenoid frontSolenoid, rearSolenoid;
 
   public Chassis(){
@@ -32,21 +34,22 @@ public class Chassis extends Subsystem {
     LeftRear = new VictorSPX(RobotMap.LeftMotorRear);
     RightFront = new VictorSPX(RobotMap.RightMotorFront);
     RightRear = new VictorSPX(RobotMap.RightMotorRear);
-    Center = new VictorSPX(RobotMap.CenterMotor);
+    Center1 = new VictorSPX(RobotMap.CenterMotor1);
+    Center2 = new VictorSPX(RobotMap.CenterMotor2);
 
     frontSolenoid = new DoubleSolenoid(4, 5);
     rearSolenoid = new DoubleSolenoid(6, 7);
     
-    RightFront.setInverted(true);
-    RightRear.setInverted(true);
-    Center.setInverted(true);
+    LeftFront.setInverted(true);
+    LeftRear.setInverted(true);
+    Center1.setInverted(true);
   }//end default constructor
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new CustomDriveWithXbox(OI.getDriverStick()));
+    setDefaultCommand(new DriveWithPilot1(OI.driverStick));
   }//end initDefaultCommand
 
   /**
@@ -71,7 +74,8 @@ public class Chassis extends Subsystem {
    * @param speed The speed to set
    */
   public void setCenterSpeed(double speed){
-    Center.set(ControlMode.PercentOutput, speed * RobotMap.CenterMaxSpeed);
+    Center1.set(ControlMode.PercentOutput, speed * RobotMap.CenterMaxSpeed);
+    Center2.set(ControlMode.PercentOutput, speed * RobotMap.CenterMaxSpeed);
   }//end setCenterSpeed
 
   /**

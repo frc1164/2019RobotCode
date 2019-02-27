@@ -22,8 +22,8 @@ public class OI {
   public static Joystick driverStick = new Joystick(RobotMap.driverPort);
   public static Joystick operatorStick = new Joystick(RobotMap.operatorPort);
   
-  public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.DriverRightShoulder);
-  public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.DriverLeftShoulder);
+  public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.XboxRightShoulder);
+  public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.XboxLeftShoulder);
 
   Button DropEndEffector = new JoystickButton(operatorStick, 2);
 	Button RaiseEndEffector = new JoystickButton(operatorStick, 3);
@@ -31,6 +31,7 @@ public class OI {
 	Button RetractHatchGrabber = new JoystickButton(operatorStick, 4);
 
   public OI(){
+
     //Climber
     toggleChassisFront.whenPressed(new raiseFront(Value.kForward));
     toggleChassisFront.whenReleased(new raiseFront(Value.kReverse));
@@ -47,7 +48,4 @@ public class OI {
   public static double deadband(double tolerance, double value){
     return (Math.abs(value) <= tolerance) ? 0 : value;
   }//end deadband
-  public static Joystick getDriverStick(){
-    return driverStick;
-  }//end getDriverStick
-}
+}//end OI
