@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -20,7 +21,7 @@ import frc.robot.commands.*;
 public class OI {
 
   public static Joystick driverStick = new Joystick(RobotMap.driverPort);
-  public static Joystick operatorStick = new Joystick(RobotMap.operatorPort);
+  public static XboxController operatorStick = new XboxController(RobotMap.operatorPort);
   
   public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.XboxRightShoulder);
   public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.XboxLeftShoulder);
