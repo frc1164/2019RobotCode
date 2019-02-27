@@ -45,7 +45,8 @@ public class RobotMap {
   public static final int LeftMotorRear = 8;
   public static final int RightMotorFront = 6;
   public static final int RightMotorRear = 5;
-  public static final int CenterMotor = 4;
+  public static final int CenterMotor1 = 4;
+  public static final int CenterMotor2 = 0;//TODO: update address of second center motor
 
   public static final double CenterMaxSpeed = 1;
 
