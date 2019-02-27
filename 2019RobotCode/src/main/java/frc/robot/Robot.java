@@ -7,10 +7,10 @@
 
 package frc.robot;
 
-
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.EndEffector;
 import frc.robot.subsystems.LineSensor;
 
 /**
@@ -23,6 +23,7 @@ import frc.robot.subsystems.LineSensor;
 public class Robot extends TimedRobot {
   public static Chassis robotChassis = new Chassis();
   public static LineSensor robotLineSensor = new LineSensor();
+  public static EndEffector robotEndEffector = new EndEffector();
   public static OI m_OI = new OI();
   
   /**
