@@ -8,14 +8,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class RunBallGrabberWithJoystick extends Command {
-  private Joystick stick;
-  public RunBallGrabberWithJoystick(Joystick joystick) {
+  private XboxController stick;
+  public RunBallGrabberWithJoystick(XboxController joystick) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.robotEndEffector);
@@ -30,7 +31,7 @@ public class RunBallGrabberWithJoystick extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.robotEndEffector.GrabBall(OI.deadband(0.05, stick.getRawAxis(RobotMap.DriverLeftY)));
+    Robot.robotEndEffector.GrabBall(OI.deadband(0.05, stick.getRawAxis(RobotMap.XboxLeftY)));
   }
 
   // Make this return true when this Command no longer needs to run execute()
