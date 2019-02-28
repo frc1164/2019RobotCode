@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.EndEffector;
 import frc.robot.subsystems.Lift;
@@ -46,7 +48,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    //robotLineSensor.readLongString();
+    SmartDashboard.putData(robotChassis);
+    SmartDashboard.putData(robotLineSensor);
+    SmartDashboard.putData(robotEndEffector);
+    SmartDashboard.putData(robotLift);
+
   }
 
   /**
