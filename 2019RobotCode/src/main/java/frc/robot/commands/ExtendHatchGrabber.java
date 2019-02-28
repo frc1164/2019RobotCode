@@ -7,31 +7,27 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
 /**
- * Command to control the front chassis climbing solenoid
+ * Add your docs here.
  */
-public class raiseFront extends InstantCommand {
-  private Value pos;
+public class ExtendHatchGrabber extends InstantCommand {
   /**
-   * Toggle the front climbing solenoids. 
-   * @param position True to raise, false to lower
+   * Add your docs here.
    */
-  public raiseFront(Value val) {
+  public ExtendHatchGrabber() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.robotChassis);
-    pos = val;
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.robotChassis.setFrontSolenoid(pos);
+    Robot.robotEndEffector.ExtendHatchGrabber();
   }
+
 
 }

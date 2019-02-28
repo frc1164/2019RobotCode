@@ -27,7 +27,6 @@ public class CustomDriveWithXbox extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double RStickX;
-    	double RStickY;
     	double LTriggerValue;
       double RTriggerValue;
       double LStickX;
@@ -35,27 +34,22 @@ public class CustomDriveWithXbox extends Command {
     	double LeftMotorValue;
     	double RightMotorValue;
     	
-    	RStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightX));
-    	RStickY = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightY));
-    	LTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverLeftTrigger));
-      RTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverRightTrigger));
-      LStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.DriverLeftX));
+    	RStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightX));
+    	LTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftTrigger));
+      RTriggerValue = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightTrigger));
+      LStickX = OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftX));
       
 		 //Drive forward and backward
     	RightMotorValue = RTriggerValue - LTriggerValue;
     	LeftMotorValue = RTriggerValue - LTriggerValue;
-    	
-      //Turning slowly (Assuming LAxis is the slow turning axis)
-      RightMotorValue = (1 - RStickX) * RightMotorValue;
-      LeftMotorValue = (1 + RStickX) * LeftMotorValue;
 
       //Turning quickly (Assuming RAxis is the fast turning axis)
-      RightMotorValue = RightMotorValue - (0.5 * RStickY);
-      LeftMotorValue = LeftMotorValue + (0.5 * RStickY);
+      RightMotorValue = RightMotorValue - (0.5 * RStickX);
+      LeftMotorValue = LeftMotorValue + (0.5 * RStickX);
     		
-		  Robot.robotChassis.setRightSpeed(RightMotorValue);
-      Robot.robotChassis.setLeftSpeed(LeftMotorValue);
-      Robot.robotChassis.setCenterSpeed(LStickX);
+		  Robot.robotChassis.setRightSpeed(RightMotorValue*0.35);
+      Robot.robotChassis.setLeftSpeed(LeftMotorValue*.35);
+      Robot.robotChassis.setCenterSpeed(LStickX*.35);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -8,11 +8,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.findLine;
-import frc.robot.commands.raiseFront;
-import frc.robot.commands.raiseRear;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -21,23 +21,34 @@ import frc.robot.commands.raiseRear;
 public class OI {
 
   public static Joystick driverStick = new Joystick(RobotMap.driverPort);
+  public static XboxController operatorStick = new XboxController(RobotMap.operatorPort);
   
-  public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.DriverRightShoulder);
-  public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.DriverLeftShoulder);
+  public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.XboxRightShoulder);
+  public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.XboxLeftShoulder);
+
+  Button DropEndEffector = new JoystickButton(operatorStick, 2);
+	Button RaiseEndEffector = new JoystickButton(operatorStick, 3);
+	Button ExtendHatchGrabber = new JoystickButton(operatorStick, 1);
+	Button RetractHatchGrabber = new JoystickButton(operatorStick, 4);
 
   public static Button target = new JoystickButton(driverStick, RobotMap.DriverYButton);
 
   public OI(){
-    toggleChassisFront.whenPressed(new raiseFront(!Robot.robotChassis.geFrontSolenoidPosition()));
-    toggleChassisRear.whenPressed(new raiseRear(!Robot.robotChassis.getRearSolenoidPosition()));
-    
-    target.whileHeld(new findLine());
+
+    //Climber
+    toggleChassisFront.whenPressed(new raiseFront(Value.kForward));
+    toggleChassisFront.whenReleased(new raiseFront(Value.kReverse));
+    toggleChassisRear.whenPressed(new raiseRear(Value.kForward));
+    toggleChassisRear.whenReleased(new raiseRear(Value.kReverse));
+
+    //End Effector
+    DropEndEffector.whileHeld(new DropEndEffector());
+		RaiseEndEffector.whenPressed(new RaiseEndEffector());
+		ExtendHatchGrabber.whenPressed(new ExtendHatchGrabber());
+		RetractHatchGrabber.whenPressed(new RetractHatchGrabber());
   }//end constructor
 
   public static double deadband(double tolerance, double value){
     return (Math.abs(value) <= tolerance) ? 0 : value;
   }//end deadband
-  public static Joystick getDriverStick(){
-    return driverStick;
-  }//end getDriverStick
-}
+}//end OI

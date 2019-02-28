@@ -17,9 +17,9 @@ public class LineSensor extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private final int BAUDRATE = 9600;
   private final int array1_numSensors = 20;
   private final int array2_numSensors = 20;
+  private static final int BAUDRATE = 9600;
   private int bufferSize = 1;
   private SerialPort arduino;
   //TODO: update offsets of each sensor
@@ -99,4 +99,5 @@ public class LineSensor extends Subsystem {
 
     return sum/j;
   }//end getArray2
+
 }// of Subsystem LineSeneor
