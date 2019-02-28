@@ -12,7 +12,9 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.OI;
 import frc.robot.RobotMap;
+import frc.robot.commands.RunLiftWithXbox;
 
 /**
  * Add your docs here.
@@ -36,6 +38,7 @@ public class Lift extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new RunLiftWithXbox(OI.operatorStick));
   }
 
   public void raise(double speed){
@@ -74,6 +77,10 @@ public class Lift extends Subsystem {
   public double getDefaultSpeed(){
     return defaultSpeed;
   }//end getDefaultSpeed
-}//end setDefaultSpeed
+
+  public void brake(){
+    raise(0);
+  }//end brake
+}
 
  
