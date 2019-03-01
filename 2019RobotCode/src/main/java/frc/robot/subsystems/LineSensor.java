@@ -24,8 +24,14 @@ public class LineSensor extends Subsystem {
   private char endLineChar;
   private int maxStringLen;
   public LineSensor(){
-    arduino = new SerialPort(BAUDRATE, SerialPort.Port.kUSB1);
-    arduino.setReadBufferSize(bufferSize);
+    try{
+      arduino = new SerialPort(BAUDRATE, SerialPort.Port.kUSB1);
+      arduino.setReadBufferSize(bufferSize);
+
+    } catch(Exception e){
+      arduino = null;
+      System.out.println("Lost Arduino");
+    }
     prevValue = 0.0;
     endLineChar = '\n';
     maxStringLen = 6;

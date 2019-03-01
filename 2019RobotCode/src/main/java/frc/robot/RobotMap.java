@@ -47,24 +47,22 @@ public class RobotMap {
   public static final int RightMotorFront = 6;
   public static final int RightMotorRear = 5;
   public static final int CenterMotor1 = 4;
-  public static final int CenterMotor2 = 0;//TODO: update address of second center motor
+  public static final int CenterMotor2 = 3;//TODO: update address of second center motor
 
   public static final double CenterMaxSpeed = 1;
 
   //Climber
   //TODO: Map Solenoids
-  public static final int ClimbMotor1 = 0;
-  public static final int ClimbMotor2 = 0;
   public static final int ClimbFrontSolenoid = 0;
-  public static final int ClimbRearSolenoid = 0;
+  public static final int ClimbRearSolenoid = 1;
 
   //EndEffector
   //TODO: Map Speed Controllers
-  public static final int GrabberMotor = 0;
+  public static final int GrabberMotor = 10;
   public static final int HatchGrabber1 = 0;
   public static final int HatchGrabber2 = 0;
-  public static final int Dropper1 = 0;
-  public static final int Dropper2 = 0;
+  public static final int Dropper1 = 2;
+  public static final int Dropper2 = 3;
   
 
 }//end class RobotMap

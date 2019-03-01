@@ -32,15 +32,15 @@ public class DriveWithPilot1 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.robotChassis.setCenterSpeed(OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotX)));
+    Robot.robotChassis.setCenterSpeed(-OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotX)));
     RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
     LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
 
     RightMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
     LeftMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
 
-    Robot.robotChassis.setLeftSpeed(LeftMotors * stick.getRawAxis(RobotMap.PilotThrottle));
-    Robot.robotChassis.setRightSpeed(RightMotors * stick.getRawAxis(RobotMap.PilotThrottle));
+    Robot.robotChassis.setLeftSpeed(LeftMotors * -stick.getRawAxis(RobotMap.PilotThrottle));
+    Robot.robotChassis.setRightSpeed(RightMotors * -stick.getRawAxis(RobotMap.PilotThrottle));
   }
 
   // Make this return true when this Command no longer needs to run execute()

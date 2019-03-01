@@ -42,7 +42,7 @@ public class Chassis extends Subsystem {
     
     LeftFront.setInverted(true);
     LeftRear.setInverted(true);
-    Center1.setInverted(true);
+    
   }//end default constructor
 
   @Override
