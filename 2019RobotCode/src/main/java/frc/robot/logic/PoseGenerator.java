@@ -15,15 +15,15 @@ public class PoseGenerator {
     public static final int invalid = -1000;
 
     //If ultrasonic is too far
-    private static final double ultrasonicMax = 1000;//TODO: update
+    private static final double ultrasonicMax = 1000;//TODO: update ultrasnoicMax
     
     //Offset of lineSensor arrays from center of bot
     public final double array1Offset = 0;
-    public final double array2Offset = 0;//TODO: update
+    public final double array2Offset = 0;//TODO: update sensor array offsets
 
     //Offset of ultrasonic sensor from center of bot
     public final double ultrasonicYOffset = 0;
-    public final double ultrasonicXOffset = 0;//TODO: update
+    public final double ultrasonicXOffset = 0;//TODO: update ultrasonic ofssets
 
     //Positions of white line detected by lineSensor
     private double x1, x2;
@@ -33,7 +33,7 @@ public class PoseGenerator {
     /**
      * 
      * @return Calculated X. Returns x1 if x2 is unavailable, x2 if x1 is unavailable, 
-     * or -1000 if x1 and x2 are unable to be calculated
+     * or <code>PoseGenerator.invalid</code> if x1 and x2 are unavailable
      */
     public double getX(){
         double d1 = array1Offset;
@@ -49,7 +49,7 @@ public class PoseGenerator {
 
     /**
      * 
-     * @return Calculated angle to wall
+     * @return Calculated angle to wall. Returns <code>PoseGenerator.invalid</code> if either x1 or x2 are unavailable
      */
     public double getTheta(){
         double d1 = array1Offset;
@@ -62,7 +62,8 @@ public class PoseGenerator {
     }//end getTheta
 
     /**
-     * @return Calculated Y position
+     * Get the calculted Y position of the Robot. Assumes <code>theta = 0</code> if theta is unavailable. 
+     * @return Calculated Y position. Returns <code>PoseGenerator.invalid</code> if ultrasonic reading is unavailable
      */
     public double getY(){
         double ysensor = ultrasonicYOffset;
@@ -76,7 +77,7 @@ public class PoseGenerator {
     }//end getY
 
     /**
-     * update the measured position of bot. Pass -1000 if unable to measure
+     * update the measured position of bot. Pass PoseGenerator.invalid if measurements are unavaliable
      * @param line1 offset detected by Array1
      * @param line2 offset detected by Array2
      * @param ultrasonic distance detected by ultrasonic

@@ -31,6 +31,8 @@ public class OI {
 	Button ExtendHatchGrabber = new JoystickButton(operatorStick, 1);
 	Button RetractHatchGrabber = new JoystickButton(operatorStick, 4);
 
+  public static Button target = new JoystickButton(driverStick, RobotMap.DriverYButton);
+
   public OI(){
 
     //Climber
