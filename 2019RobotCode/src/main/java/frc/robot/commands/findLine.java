@@ -7,40 +7,44 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.command.Command;
-
-import frc.robot.OI;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class DriveWithPilot1 extends Command {
-  double RightMotors, LeftMotors;
-  Joystick stick;
-  public DriveWithPilot1(Joystick joystick) {
+public class findLine extends Command {
+
+  //get gains from ShuffleBoard
+  private ShuffleboardTab tab = Shuffleboard.getTab("findLine commands");
+  private NetworkTableEntry XmaxSpeed = tab.add("X Max Speed", 0.15).withWidget(BuiltInWidgets.kTextView).getEntry();
+  private NetworkTableEntry XkP, XkI, XkD;
+  
+  public findLine() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.robotChassis);
-    stick = joystick;
+
+    //get gains from Shuffleboard
+    XkP = tab.add("kP", 0).withWidget(BuiltInWidgets.kNumberSlider).getEntry();
+    XkI = tab.add("kI", 0).withWidget(BuiltInWidgets.kNumberSlider).getEntry();
+    XkD = tab.add("kD", 0).withWidget(BuiltInWidgets.kNumberSlider).getEntry();
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    //reset PID Controller and update gains
+    Robot.robotDriveController.resetXPID();
+    Robot.robotDriveController.setXGains(XkP.getDouble(0), XkI.getDouble(0), XkD.getDouble(0));
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.robotChassis.setCenterSpeed(-OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotX)));
-    RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
-    LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
-
-    RightMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
-    LeftMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate));
-
-    Robot.robotChassis.setLeftSpeed(LeftMotors * -stick.getRawAxis(RobotMap.PilotThrottle));
-    Robot.robotChassis.setRightSpeed(RightMotors * -stick.getRawAxis(RobotMap.PilotThrottle));
+    Robot.robotDriveController.update();
+    Robot.robotChassis.setCenterSpeed(Robot.robotDriveController.getXOutput());
   }
 
   // Make this return true when this Command no longer needs to run execute()

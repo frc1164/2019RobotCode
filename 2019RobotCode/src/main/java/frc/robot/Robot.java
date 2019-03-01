@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.logic.DriveController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Chassis;
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
   public static EndEffector robotEndEffector = new EndEffector();
   public static Lift robotLift = new Lift();
   public static OI m_OI = new OI();
+  public static DriveController robotDriveController = new DriveController();
   
   /**
    * This function is run when the robot is first started up and should be
@@ -48,6 +50,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
     SmartDashboard.putData(robotChassis);
     SmartDashboard.putData(robotLineSensor);
     SmartDashboard.putData(robotEndEffector);

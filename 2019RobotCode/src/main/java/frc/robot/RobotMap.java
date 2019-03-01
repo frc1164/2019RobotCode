@@ -33,6 +33,7 @@ public class RobotMap {
   public static final int XboxLeftTrigger = 2;
   public static final int XboxRightShoulder = 6;
   public static final int XboxLeftShoulder = 5;
+  public static final int XboxYButton = 3;
   public static final int driverPort = 0;
 
   public static final int PilotX = 0;
@@ -47,29 +48,35 @@ public class RobotMap {
   public static final int RightMotorFront = 6;
   public static final int RightMotorRear = 5;
   public static final int CenterMotor1 = 4;
-  public static final int CenterMotor2 = 0;//TODO: update address of second center motor
+  public static final int CenterMotor2 = 3;
 
   public static final double CenterMaxSpeed = 1;
 
   //Climber
   //TODO: Map Solenoids
-  public static final int ClimbMotor1 = 0;
-  public static final int ClimbMotor2 = 0;
-  public static final int ClimbFrontSolenoid = 0;
-  public static final int ClimbRearSolenoid = 0;
+  public static final int ClimbFrontSolenoid1 = 4;
+  public static final int ClimbFrontSolenoid2 = 5;
+  public static final int ClimbRearSolenoid1 = 6;
+  public static final int ClimbRearSolenoid2 = 7;
+  public static final int ClimbFrontPCM = 2;
+  public static final int ClimbRearPCM = 2;
+
 
   //EndEffector
   //TODO: Map Speed Controllers
-  public static final int GrabberMotor = 0;
-  public static final int HatchGrabber1 = 0;
-  public static final int HatchGrabber2 = 0;
-  public static final int Dropper1 = 0;
-  public static final int Dropper2 = 0;
+  public static final int GrabberMotor = 10;
+  public static final int HatchGrabber1 = 2;
+  public static final int HatchGrabber2 = 3;
+  public static final int HatchPCM = 1;
+  public static final int Dropper1 = 2;
+  public static final int Dropper2 = 3;
+  public static final int DropperPCM = 2;
 
   //Lift
   //TODO: Map channels for Lift
   public static final int LiftMotor = 0;
-  public static final int LiftSolenoid = 0;
-  
+  public static final int LiftSolenoid1 = 0;
+  public static final int LitftSolenoid2 = 1;
+  public static final int LiftPCM = 2;  
 
 }//end class RobotMap
