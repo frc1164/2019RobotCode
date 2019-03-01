@@ -54,16 +54,23 @@ public class RobotMap {
 
   //Climber
   //TODO: Map Solenoids
-  public static final int ClimbFrontSolenoid = 0;
-  public static final int ClimbRearSolenoid = 1;
+  public static final int ClimbFrontSolenoid1 = 4;
+  public static final int ClimbFrontSolenoid2 = 5;
+  public static final int ClimbRearSolenoid1 = 6;
+  public static final int ClimbRearSolenoid2 = 7;
+  public static final int ClimbFrontPCM = 2;
+  public static final int ClimbRearPCM = 2;
+
 
   //EndEffector
   //TODO: Map Speed Controllers
   public static final int GrabberMotor = 10;
-  public static final int HatchGrabber1 = 0;
-  public static final int HatchGrabber2 = 0;
+  public static final int HatchGrabber1 = 2;
+  public static final int HatchGrabber2 = 3;
+  public static final int HatchPCM = 1;
   public static final int Dropper1 = 2;
   public static final int Dropper2 = 3;
+  public static final int DropperPCM = 2;
   
 
 }//end class RobotMap

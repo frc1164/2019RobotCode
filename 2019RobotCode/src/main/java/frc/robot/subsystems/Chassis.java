@@ -37,8 +37,8 @@ public class Chassis extends Subsystem {
     Center1 = new VictorSPX(RobotMap.CenterMotor1);
     Center2 = new VictorSPX(RobotMap.CenterMotor2);
 
-    frontSolenoid = new DoubleSolenoid(4, 5);
-    rearSolenoid = new DoubleSolenoid(6, 7);
+    frontSolenoid = new DoubleSolenoid(RobotMap.ClimbFrontPCM, RobotMap.ClimbFrontSolenoid1, RobotMap.ClimbFrontSolenoid2);
+    rearSolenoid = new DoubleSolenoid(RobotMap.ClimbRearPCM, RobotMap.ClimbRearSolenoid1, RobotMap.ClimbRearSolenoid2);
     
     LeftFront.setInverted(true);
     LeftRear.setInverted(true);

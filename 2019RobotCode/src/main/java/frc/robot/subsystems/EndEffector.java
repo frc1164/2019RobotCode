@@ -42,8 +42,8 @@ public class EndEffector extends Subsystem {
 
   public EndEffector(){
     GrabberMotor = new VictorSPX(RobotMap.GrabberMotor);
-    //HatchGrabber = new DoubleSolenoid(RobotMap.HatchGrabber1,RobotMap.HatchGrabber2);
-    Dropper = new DoubleSolenoid(RobotMap.Dropper1,RobotMap.Dropper2);
+    HatchGrabber = new DoubleSolenoid(RobotMap.HatchPCM, RobotMap.HatchGrabber1,RobotMap.HatchGrabber2);
+    Dropper = new DoubleSolenoid(RobotMap.DropperPCM, RobotMap.Dropper1,RobotMap.Dropper2);
     LimitSwitch0 = new DigitalInput(4);
     LimitSwitch1 = new DigitalInput(5);
 
