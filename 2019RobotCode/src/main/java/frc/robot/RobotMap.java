@@ -33,7 +33,7 @@ public class RobotMap {
   public static final int XboxLeftTrigger = 2;
   public static final int XboxRightShoulder = 6;
   public static final int XboxLeftShoulder = 5;
-  public static final int XboxYButton = 3;
+  public static final int XboxYButton = 4;
   public static final int driverPort = 0;
 
   public static final int PilotX = 0;
