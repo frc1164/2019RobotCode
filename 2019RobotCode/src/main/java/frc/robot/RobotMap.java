@@ -33,6 +33,7 @@ public class RobotMap {
   public static final int XboxLeftTrigger = 2;
   public static final int XboxRightShoulder = 6;
   public static final int XboxLeftShoulder = 5;
+  public static final int XboxYButton = 3;
   public static final int driverPort = 0;
 
   public static final int PilotX = 0;
@@ -47,7 +48,7 @@ public class RobotMap {
   public static final int RightMotorFront = 6;
   public static final int RightMotorRear = 5;
   public static final int CenterMotor1 = 4;
-  public static final int CenterMotor2 = 3;//TODO: update address of second center motor
+  public static final int CenterMotor2 = 3;
 
   public static final double CenterMaxSpeed = 1;
 
