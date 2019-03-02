@@ -10,7 +10,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.OI;
 import frc.robot.RobotMap;
@@ -25,12 +26,12 @@ public class Lift extends Subsystem {
 
   private VictorSPX LiftMotor;
   private double defaultSpeed;
-  private Solenoid liftSol;
+  private DoubleSolenoid liftSol;
 
   public Lift(){
     LiftMotor = new VictorSPX(RobotMap.LiftMotor);
     defaultSpeed = 0.5;
-    liftSol = new Solenoid(RobotMap.LiftSolenoid);
+    liftSol = new DoubleSolenoid(RobotMap.LiftPCM, RobotMap.LiftSolenoid1, RobotMap.LiftSolenoid2);
 
   }//end constructor
   
@@ -57,8 +58,13 @@ public class Lift extends Subsystem {
     lower(-defaultSpeed);
   }//end default lower
 
-  public void startingConfig(boolean config){
-    liftSol.set(config);
+  public void startingConfig(boolean setToStartingConfig){
+    if(setToStartingConfig){
+      liftSol.set(Value.kForward);
+      return;
+    }//end if
+
+    liftSol.set(Value.kReverse);
   }//end leanBack
 
   public void setDefaultSpeed(double newDefaultSpeed){

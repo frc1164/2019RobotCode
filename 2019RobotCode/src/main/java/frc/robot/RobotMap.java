@@ -74,9 +74,9 @@ public class RobotMap {
 
   //Lift
   //TODO: Map channels for Lift
-  public static final int LiftMotor = 0;
+  public static final int LiftMotor = 9;
   public static final int LiftSolenoid1 = 0;
-  public static final int LitftSolenoid2 = 1;
+  public static final int LiftSolenoid2 = 1;
   public static final int LiftPCM = 2;  
 
 }//end class RobotMap
