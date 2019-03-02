@@ -71,6 +71,12 @@ public class RobotMap {
   public static final int Dropper1 = 2;
   public static final int Dropper2 = 3;
   public static final int DropperPCM = 2;
-  
+
+  //Lift
+  //TODO: Map channels for Lift
+  public static final int LiftMotor = 0;
+  public static final int LiftSolenoid1 = 0;
+  public static final int LitftSolenoid2 = 1;
+  public static final int LiftPCM = 2;  
 
 }//end class RobotMap
