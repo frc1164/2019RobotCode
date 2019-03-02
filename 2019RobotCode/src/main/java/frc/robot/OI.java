@@ -29,7 +29,9 @@ public class OI {
   Button DropEndEffector = new JoystickButton(operatorStick, 2);
 	Button RaiseEndEffector = new JoystickButton(operatorStick, 3);
 	Button ExtendHatchGrabber = new JoystickButton(operatorStick, 1);
-	Button RetractHatchGrabber = new JoystickButton(operatorStick, 4);
+  Button RetractHatchGrabber = new JoystickButton(operatorStick, 4);
+  Button LeanLiftForward = new JoystickButton(operatorStick, 0);//TODO: Map Button
+  Button LeanLiftBack = new JoystickButton(operatorStick, 0);//TODO: Map Button
 
   public static Button target = new JoystickButton(driverStick, RobotMap.XboxYButton);
 
@@ -45,7 +47,11 @@ public class OI {
     DropEndEffector.whileHeld(new DropEndEffector());
 		RaiseEndEffector.whenPressed(new RaiseEndEffector());
 		ExtendHatchGrabber.whenPressed(new ExtendHatchGrabber());
-		RetractHatchGrabber.whenPressed(new RetractHatchGrabber());
+    RetractHatchGrabber.whenPressed(new RetractHatchGrabber());
+    
+    //Lift
+    LeanLiftForward.whenPressed(new leanLiftForward());
+    LeanLiftBack.whenPressed(new leanLiftBack());
   }//end constructor
 
   public static double deadband(double tolerance, double value){
