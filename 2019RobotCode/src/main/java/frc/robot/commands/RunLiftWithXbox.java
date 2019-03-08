@@ -30,7 +30,7 @@ public class RunLiftWithXbox extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.robotLift.raise(OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxRightY)));
+    Robot.robotLift.raise(OI.deadband(0.1, stick.getRawAxis(RobotMap.XboxLeftY)));
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -34,12 +34,18 @@ public class RobotMap {
   public static final int XboxRightShoulder = 6;
   public static final int XboxLeftShoulder = 5;
   public static final int XboxYButton = 4;
+  public static final int XboxXButton = 3;
+  public static final int XboxAButton = 1;
+  public static final int XboxBButton = 2;
+  public static final int XboxStart = 8;
+  public static final int XboxSelect = 7;
   public static final int driverPort = 0;
 
   public static final int PilotX = 0;
   public static final int PilotY = 1;
   public static final int PilotRotate = 2;
   public static final int PilotThrottle = 3;
+  public static final int PilotTrigger = 1;
   public static final int operatorPort = 1;
 
   //Chassis
@@ -53,29 +59,27 @@ public class RobotMap {
   public static final double CenterMaxSpeed = 1;
 
   //Climber
-  //TODO: Map Solenoids
   public static final int ClimbFrontSolenoid1 = 0;
   public static final int ClimbFrontSolenoid2 = 1;
   public static final int ClimbRearSolenoid1 = 4;
   public static final int ClimbRearSolenoid2 = 5;
-  public static final int ClimbFrontPCM = 2;
-  public static final int ClimbRearPCM = 2;
+  public static final int ClimbFrontPCM = 11;
+  public static final int ClimbRearPCM = 11;
 
 
   //EndEffector
   public static final int GrabberMotor = 10;
   public static final int HatchGrabber1 = 2;
   public static final int HatchGrabber2 = 3;
-  public static final int HatchPCM = 1;
+  public static final int HatchPCM = 11;
   public static final int Dropper1 = 2;
   public static final int Dropper2 = 3;
-  public static final int DropperPCM = 2;
+  public static final int DropperPCM = 0;
 
   //Lift
-  //TODO: Map channels for Lift
   public static final int LiftMotor = 9;
   public static final int LiftSolenoid1 = 0;
   public static final int LiftSolenoid2 = 1;
-  public static final int LiftPCM = 2;  
+  public static final int LiftPCM = 0;  
 
 }//end class RobotMap

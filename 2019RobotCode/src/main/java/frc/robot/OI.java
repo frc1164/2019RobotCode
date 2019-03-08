@@ -23,28 +23,30 @@ public class OI {
   public static Joystick driverStick = new Joystick(RobotMap.driverPort);
   public static XboxController operatorStick = new XboxController(RobotMap.operatorPort);
   
-  public static Button toggleChassisFront = new JoystickButton(driverStick, RobotMap.XboxRightShoulder);
-  public static Button toggleChassisRear = new JoystickButton(driverStick, RobotMap.XboxLeftShoulder);
+  public static Button toggleChassisFront = new JoystickButton(driverStick, 4);
+  public static Button toggleChassisRear = new JoystickButton(driverStick, 3);
+  Button AutoLineUp = new JoystickButton(driverStick, 2);
 
-  Button DropEndEffector = new JoystickButton(operatorStick, 2);
-	Button RaiseEndEffector = new JoystickButton(operatorStick, 3);
-	Button ExtendHatchGrabber = new JoystickButton(operatorStick, 1);
-  Button RetractHatchGrabber = new JoystickButton(operatorStick, 4);
-  Button LeanLiftForward = new JoystickButton(operatorStick, 0);//TODO: Map Button
-  Button LeanLiftBack = new JoystickButton(operatorStick, 0);//TODO: Map Button
+  Button DropEndEffector = new JoystickButton(operatorStick, RobotMap.XboxBButton);
+	Button RaiseEndEffector = new JoystickButton(operatorStick, RobotMap.XboxAButton);
+	Button ExtendHatchGrabber = new JoystickButton(operatorStick, RobotMap.XboxRightShoulder);
+  Button RetractHatchGrabber = new JoystickButton(operatorStick, RobotMap.XboxLeftShoulder);
+  Button LeanLiftForward = new JoystickButton(operatorStick, RobotMap.XboxSelect);
+  Button LeanLiftBack = new JoystickButton(operatorStick, RobotMap.XboxStart);
+  
 
   public static Button target = new JoystickButton(driverStick, RobotMap.XboxYButton);
 
   public OI(){
 
     //Climber
-    toggleChassisFront.whenPressed(new raiseFront(Value.kForward));
-    toggleChassisFront.whenReleased(new raiseFront(Value.kReverse));
+    toggleChassisFront.whenPressed(new raiseFront(Value.kReverse));
+    toggleChassisFront.whenReleased(new raiseFront(Value.kForward));
     toggleChassisRear.whenPressed(new raiseRear(Value.kForward));
     toggleChassisRear.whenReleased(new raiseRear(Value.kReverse));
 
     //End Effector
-    DropEndEffector.whileHeld(new DropEndEffector());
+    DropEndEffector.whenPressed(new DropEndEffector());
 		RaiseEndEffector.whenPressed(new RaiseEndEffector());
 		ExtendHatchGrabber.whenPressed(new ExtendHatchGrabber());
     RetractHatchGrabber.whenPressed(new RetractHatchGrabber());
@@ -52,6 +54,9 @@ public class OI {
     //Lift
     LeanLiftForward.whenPressed(new leanLiftForward());
     LeanLiftBack.whenPressed(new leanLiftBack());
+
+    //Chassis
+    AutoLineUp.whileHeld(new targetLine());
   }//end constructor
 
   public static double deadband(double tolerance, double value){

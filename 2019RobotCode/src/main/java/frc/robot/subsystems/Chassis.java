@@ -42,7 +42,8 @@ public class Chassis extends Subsystem {
     
     LeftFront.setInverted(true);
     LeftRear.setInverted(true);
-    
+    setFrontSolenoid(Value.kForward);
+    setRearSolenoid(Value.kReverse);
   }//end default constructor
 
   @Override

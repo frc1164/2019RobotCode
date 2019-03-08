@@ -53,9 +53,9 @@ public class DriveController{
    * Update the DriveController goals and current positions
    */
   public void update(){
-    poseMaker.update(Robot.robotLineSensor.getArray1(), 
-      Robot.robotLineSensor.getArray2(), 
-      Robot.robotChassis.getUltrasonic());
+    // poseMaker.update(Robot.robotLineSensor.getArray1(), 
+    //   Robot.robotLineSensor.getArray2(), 
+    //   Robot.robotChassis.getUltrasonic());
     double currX = poseMaker.getX();
     double currY = poseMaker.getY();
     double currTheta = poseMaker.getTheta();

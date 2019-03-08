@@ -50,20 +50,20 @@ public class EndEffector extends Subsystem {
     GrabberMotor.setInverted(true);
   }
 
-  // public void DropEndEffector() {
-  //   HatchGrabber.set(Value.kForward);
-  // }
+  public void DropEndEffector() {
+    Dropper.set(Value.kForward);
+  }
 
-  // public void RaiseEndEffector() {
-  //   HatchGrabber.set(Value.kReverse);
-  // }
+  public void RaiseEndEffector() {
+    Dropper.set(Value.kReverse);
+  }
   
   public void ExtendHatchGrabber() {
-     Dropper.set(Value.kForward);
+     HatchGrabber.set(Value.kForward);
   }
 
   public void RetractHatchGrabber() {
-     Dropper.set(Value.kReverse);
+     HatchGrabber.set(Value.kReverse);
   }
 
   public void GrabBall(double speed) {

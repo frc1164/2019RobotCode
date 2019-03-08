@@ -26,7 +26,7 @@ public class DropEndEffector extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    //Robot.robotEndEffector.DropEndEffector();
+    Robot.robotEndEffector.DropEndEffector();
   }
 
 }

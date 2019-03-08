@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -17,14 +18,14 @@ public class LineSensor extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private final int array1_numSensors = 20;
-  private final int array2_numSensors = 20;
+  
   private static final int BAUDRATE = 9600;
   private int bufferSize = 1;
   private SerialPort arduino;
-  //TODO: update offsets of each sensor
-  private double[] array1_offsets;
-  private double[] array2_offsets;
+  private int maxStringLen = 7;
+  private int prevValue = 0;
+  private char endLineChar = '\n';
+
 
   public LineSensor(){
 
@@ -57,56 +58,17 @@ public class LineSensor extends Subsystem {
     return arduino.read(arduino.getBytesReceived());
   }//end getRaw
 
-  /**
-   * Get the calculated center of white line
-   * @return Calculated offset from center of bot
-   */
-  public double getArray1(){
-    double[] lineDetected = new double[array1_numSensors];    
-    String data = getString();
-    int i, j = 0;
-    double sum = 0;
+  public int getInt(){
+    String dataIn = getString();
+    if(dataIn.length() < maxStringLen*2) return prevValue; //if data is too short to parse use last recorded value
 
-    //Find all positions where white was detected
-    for( i = 0; i < array1_numSensors; i++){
-      if(data.charAt(i) == 't'){
-        lineDetected[j] = array1_offsets[i];
-        j++;
-      }//end if
-    }//end for
-
-    //average the offsets of the sensors that detected white
-    for(i = 0; i < j; i++){
-      sum += lineDetected[i];
-    }//end for 
-
-    return sum/j;
-  }//end getArray1
-
-  /**
-   * Get calculated center of white line
-   * @return Calculated offset from center of bot
-   */
-  public double getArray2(){
-    double[] lineDetected = new double[array1_numSensors];    
-    String data = getString();
-    int i, j = 0;
-    double sum = 0;
-
-    //Find all positions where white was detected
-    for(i = array1_numSensors; i < array2_numSensors; i++){
-      if(data.charAt(i) == 't'){
-        lineDetected[j] = array2_offsets[i];
-        j++;
-      }//end if
-    }//end for
-
-    //average the offsets of the sensors that detected white
-    for(i = 0; i < j; i++){
-      sum += lineDetected[i];
-    }//end for 
-
-    return sum/j;
-  }//end getArray2
+    int index;
+    index = dataIn.lastIndexOf(endLineChar);
+    dataIn = dataIn.substring(0,index);
+    index = dataIn.lastIndexOf(endLineChar);
+    dataIn = dataIn.substring(index+1);
+    SmartDashboard.putNumber("Line Sensor", Integer.parseInt(dataIn));
+    return Integer.parseInt(dataIn);
+    }//end getDouble
 
 }// of Subsystem LineSeneor
