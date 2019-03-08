@@ -33,7 +33,7 @@ public class RobotMap {
   public static final int XboxLeftTrigger = 2;
   public static final int XboxRightShoulder = 6;
   public static final int XboxLeftShoulder = 5;
-  public static final int XboxYButton = 3;
+  public static final int XboxYButton = 4;
   public static final int driverPort = 0;
 
   public static final int PilotX = 0;
@@ -54,16 +54,15 @@ public class RobotMap {
 
   //Climber
   //TODO: Map Solenoids
-  public static final int ClimbFrontSolenoid1 = 4;
-  public static final int ClimbFrontSolenoid2 = 5;
-  public static final int ClimbRearSolenoid1 = 6;
-  public static final int ClimbRearSolenoid2 = 7;
+  public static final int ClimbFrontSolenoid1 = 0;
+  public static final int ClimbFrontSolenoid2 = 1;
+  public static final int ClimbRearSolenoid1 = 4;
+  public static final int ClimbRearSolenoid2 = 5;
   public static final int ClimbFrontPCM = 2;
   public static final int ClimbRearPCM = 2;
 
 
   //EndEffector
-  //TODO: Map Speed Controllers
   public static final int GrabberMotor = 10;
   public static final int HatchGrabber1 = 2;
   public static final int HatchGrabber2 = 3;
