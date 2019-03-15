@@ -37,14 +37,16 @@ public class targetLine extends Command {
   @Override
   protected void initialize() {
     lineFinder.reset();
-    lineFinder.setGains(P, I, D);
     P = kP.getDouble(0.0);
     I = kI.getDouble(0.0);
     D = kD.getDouble(0.0);
-    PIDGoal = goal.getDouble(7500);
+    lineFinder.setGains(P, I, D);
+    
 
     double[] gains = {P, I, D};
     SmartDashboard.putNumberArray("PID Gains", gains);
+    PIDGoal = goal.getDouble(7500);
+    Robot.robotLineSensor.reset();
   }
 
   // Called repeatedly when this Command is scheduled to run

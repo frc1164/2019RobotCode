@@ -22,7 +22,7 @@ public class LineSensor extends Subsystem {
   private static final int BAUDRATE = 9600;
   private int bufferSize = 1;
   private SerialPort arduino;
-  private int maxStringLen = 7;
+  private int maxStringLen = 5;
   private int prevValue = 0;
   private char endLineChar = '\n';
 
@@ -49,26 +49,32 @@ public class LineSensor extends Subsystem {
 
   public String getString(){
     //return String from buffer
-    String string = arduino.readString();
+    String string = "";
+    int count = 0;
+    char currentChar;
+    while(count < 2){
+      currentChar = (char) arduino.read(1)[0];
+      string += currentChar;
+      if(currentChar == '\n') count++;
+    }//end while
+    SmartDashboard.putString("Arduino String", string);
     return string;
   }// of method getRaw
 
-  public byte[] getRaw(){
-    //return raw data as byte array
-    return arduino.read(arduino.getBytesReceived());
-  }//end getRaw
-
   public int getInt(){
     String dataIn = getString();
-    if(dataIn.length() < maxStringLen*2) return prevValue; //if data is too short to parse use last recorded value
-
     int index;
     index = dataIn.lastIndexOf(endLineChar);
     dataIn = dataIn.substring(0,index);
     index = dataIn.lastIndexOf(endLineChar);
     dataIn = dataIn.substring(index+1);
+    prevValue = Integer.parseInt(dataIn);
     SmartDashboard.putNumber("Line Sensor", Integer.parseInt(dataIn));
     return Integer.parseInt(dataIn);
     }//end getDouble
+
+  public void reset(){
+    arduino.reset();
+  }//end reset
 
 }// of Subsystem LineSeneor
