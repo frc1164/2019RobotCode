@@ -26,6 +26,7 @@ public class targetLine extends Command {
   private NetworkTableEntry goal = tab.add("Line goal", 7500).getEntry();
   double P, I, D, PIDGoal;
   Double speed;
+  int sensorVal;
 
   public targetLine() {
     // Use requires() here to declare subsystem dependencies
@@ -45,14 +46,15 @@ public class targetLine extends Command {
 
     double[] gains = {P, I, D};
     SmartDashboard.putNumberArray("PID Gains", gains);
-    PIDGoal = goal.getDouble(7500);
+    PIDGoal = goal.getDouble(10000);
     Robot.robotLineSensor.reset();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    speed = lineFinder.update(PIDGoal, Robot.robotLineSensor.getInt()) * 0.001;
+    sensorVal = Robot.robotLineSensor.getInt();
+    speed = lineFinder.update(PIDGoal,  sensorVal) * 0.001;
     Robot.robotChassis.setCenterSpeed(speed);
     SmartDashboard.putNumber("PID Output", speed);
   }
@@ -60,7 +62,7 @@ public class targetLine extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return (sensorVal > 13900);
   }
 
   // Called once after isFinished returns true

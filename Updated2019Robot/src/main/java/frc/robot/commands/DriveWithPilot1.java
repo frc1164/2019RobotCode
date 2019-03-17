@@ -33,8 +33,8 @@ public class DriveWithPilot1 extends Command {
   @Override
   protected void execute() {
     Robot.robotChassis.setCenterSpeed(-OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotX)) * (stick.getRawButton(RobotMap.PilotTrigger) ? 0 : 1));
-    RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
-    LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY));
+    RightMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY)) * (stick.getRawButton(5) ? 0 : 1);
+    LeftMotors = OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotY)) * (stick.getRawButton(5) ? 0 : 1);
 
     RightMotors += 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate)) * (stick.getRawButton(RobotMap.PilotTrigger) ? 0 : 1);
     LeftMotors -= 0.5 * OI.deadband(0.1, stick.getRawAxis(RobotMap.PilotRotate)) * (stick.getRawButton(RobotMap.PilotTrigger) ? 0 : 1);

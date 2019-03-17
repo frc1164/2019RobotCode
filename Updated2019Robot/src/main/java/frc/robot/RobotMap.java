@@ -71,15 +71,15 @@ public class RobotMap {
   public static final int GrabberMotor = 10;
   public static final int HatchGrabber1 = 2;
   public static final int HatchGrabber2 = 3;
-  public static final int HatchPCM = 11;
-  public static final int Dropper1 = 2;
-  public static final int Dropper2 = 3;
-  public static final int DropperPCM = 0;
+  public static final int HatchPCM = 0;
+  public static final int Dropper1 = 7;
+  public static final int Dropper2 = 6;
+  public static final int DropperPCM = 11;
 
   //Lift
   public static final int LiftMotor = 9;
-  public static final int LiftSolenoid1 = 0;
-  public static final int LiftSolenoid2 = 1;
-  public static final int LiftPCM = 0;  
+  public static final int LiftSolenoid1 = 2;
+  public static final int LiftSolenoid2 = 3;
+  public static final int LiftPCM = 11;  
 
 }//end class RobotMap
