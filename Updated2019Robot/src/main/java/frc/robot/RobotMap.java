@@ -46,6 +46,7 @@ public class RobotMap {
   public static final int PilotRotate = 2;
   public static final int PilotThrottle = 3;
   public static final int PilotTrigger = 1;
+  public static final int DriverTargetLine = 2;
   public static final int operatorPort = 1;
 
   //Chassis

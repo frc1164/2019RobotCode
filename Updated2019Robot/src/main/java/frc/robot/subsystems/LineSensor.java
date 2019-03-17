@@ -77,4 +77,8 @@ public class LineSensor extends Subsystem {
     arduino.reset();
   }//end reset
 
+  public Boolean seesLine(){
+    return (getInt() < 13900);
+  }//end seesLine
+
 }// of Subsystem LineSeneor

@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.commands.*;
+import frc.robot.triggers.CenterWithSensor;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -25,7 +27,7 @@ public class OI {
   
   public static Button toggleChassisFront = new JoystickButton(driverStick, 4);
   public static Button toggleChassisRear = new JoystickButton(driverStick, 3);
-  Button AutoLineUp = new JoystickButton(driverStick, 2);
+  Trigger AutoLineUp = new CenterWithSensor(driverStick, RobotMap.DriverTargetLine);
 
   Button DropEndEffector = new JoystickButton(operatorStick, RobotMap.XboxBButton);
 	Button RaiseEndEffector = new JoystickButton(operatorStick, RobotMap.XboxAButton);
@@ -34,9 +36,6 @@ public class OI {
   Button LeanLiftForward = new JoystickButton(operatorStick, RobotMap.XboxSelect);
   Button LeanLiftBack = new JoystickButton(operatorStick, RobotMap.XboxStart);
   
-
-  public static Button target = new JoystickButton(driverStick, RobotMap.XboxYButton);
-
   public OI(){
 
     //Climber
@@ -56,7 +55,7 @@ public class OI {
     LeanLiftBack.whenPressed(new leanLiftBack());
 
     //Chassis
-    AutoLineUp.whileHeld(new targetLine());
+    AutoLineUp.whileActive(new targetLine());
   }//end constructor
 
   public static double deadband(double tolerance, double value){
