@@ -27,7 +27,7 @@ public class leanLiftForward extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.robotLift.startingConfig(false);
+    //Robot.robotLift.startingConfig(false);
   }
 
 }

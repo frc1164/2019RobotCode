@@ -17,6 +17,8 @@ import frc.robot.subsystems.EndEffector;
 import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.LineSensor;
 
+import frc.robot.commands.MakeLiftGoUp;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -109,6 +111,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    SmartDashboard.putData("Make Lift Go Up", new MakeLiftGoUp());
 
   }
 

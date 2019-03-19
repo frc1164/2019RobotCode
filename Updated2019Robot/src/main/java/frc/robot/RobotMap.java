@@ -82,5 +82,8 @@ public class RobotMap {
   public static final int LiftSolenoid1 = 2;
   public static final int LiftSolenoid2 = 3;
   public static final int LiftPCM = 11;  
+  public static final int Lift_Encoder_ChannelA = 6;
+  public static final int Lift_Encoder_ChannelB = 7;
+
 
 }//end class RobotMap

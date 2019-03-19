@@ -7,15 +7,14 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.OI;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.Encoder;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.RobotMap;
-import frc.robot.commands.RunLiftWithXbox;
 
 /**
  * Add your docs here.
@@ -24,69 +23,76 @@ public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private VictorSPX LiftMotor;
-  private double defaultSpeed;
-  private DoubleSolenoid liftSol;
+  private WPI_VictorSPX liftMotor;
+  private Encoder liftEncoder;
+  public NetworkTableEntry sP;
 
-  public Lift(){
-    LiftMotor = new VictorSPX(RobotMap.LiftMotor);
-    defaultSpeed = 0.5;
-    liftSol = new DoubleSolenoid(RobotMap.LiftPCM, RobotMap.LiftSolenoid1, RobotMap.LiftSolenoid2);
-
-  }//end constructor
+  public NetworkTableEntry kP, kI, kD, kV, V_MAX, A_MAX;
+  public ShuffleboardTab tuning = Shuffleboard.getTab("PID");
   
+
+
+public Lift(){
+
+  liftMotor = new WPI_VictorSPX(RobotMap.LiftMotor);
+  SmartDashboard.putData("Lift Motor", liftMotor);
+  
+  liftEncoder = new Encoder(RobotMap.Lift_Encoder_ChannelA, RobotMap.Lift_Encoder_ChannelB, true, Encoder.EncodingType.k4X);
+  liftEncoder.setDistancePerPulse(3.57/127.2);
+  liftEncoder.setMinRate(10);
+  //liftEncoder.setDistancePerPulse(1);
+  liftEncoder.reset();
+
+   
+  V_MAX = tuning.add("VMax", 1).getEntry();
+  
+
+  A_MAX = tuning.add("AMax", 1).getEntry();
+  
+
+  kP = tuning.add("kP", 0).getEntry();
+  
+
+  kI = tuning.add("kI", 0).getEntry();
+  
+
+  kD = tuning.add("kD", 0).getEntry();
+  
+
+  kV = tuning.add("kV", 0).getEntry();
+  
+  sP = tuning.add("Set Point", 0).getEntry();
+  
+
+}
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new RunLiftWithXbox(OI.operatorStick));
+    
+  }
+ 
+  public double getRaw(){
+
+  return liftEncoder.getRaw();
   }
 
-  public void raise(double speed){
-    LiftMotor.set(ControlMode.PercentOutput, speed);
-  }//end raise
+  public double getDistance(){
+    return liftEncoder.getDistance();
+  }
+  public void resetEncoder(){
+    liftEncoder.reset();
+  }
 
-  public void raise(){
-    raise(defaultSpeed);
-  }//end default raise
+  public void setLiftSpeed(double speed){
+    SmartDashboard.putNumber("Lift Motor Speed", speed);
+    liftMotor.set(speed);
 
-  public void lower(double speed){
-    LiftMotor.set(ControlMode.PercentOutput, -speed);
-  }//end lower
+  }
 
-  public void lower(){
-    lower(-defaultSpeed);
-  }//end default lower
+  public void showVoltage(){
 
-  public void startingConfig(boolean setToStartingConfig){
-    if(setToStartingConfig){
-      liftSol.set(Value.kForward);
-      return;
-    }//end if
-
-    liftSol.set(Value.kReverse);
-  }//end leanBack
-
-  public void setDefaultSpeed(double newDefaultSpeed){
-    if(newDefaultSpeed < -1){
-      defaultSpeed = -1;
-      return;
-    }
-    if(newDefaultSpeed > 1){
-      defaultSpeed = 1;
-      return;
-    }
-
-    defaultSpeed = newDefaultSpeed;
-  }//end setDefaultSpeed
-
-  public double getDefaultSpeed(){
-    return defaultSpeed;
-  }//end getDefaultSpeed
-
-  public void brake(){
-    raise(0);
-  }//end brake
-}
-
+  }
  
+}
